@@ -3,9 +3,17 @@ const { SECTORS, CAMPAIGNS, WEEKS, ALERTS, INVENTORY, SECTOR_VARS, fmtNum } = wi
 
 /* ===================== M1 — Panel de Control Global (fundo) ===================== */
 function GlobalDashboard() {
-  const { navigate } = useRouter();
+  const { navigate, toast } = useRouter();
   const f = window.HP.fundo;
   const fincas = window.HP.fincasList || [];
+  // Clic en una finca = enfocar el panel en ella (cambia el contexto, como el selector
+  // de la cabecera). Si ya es la activa, abre su gestión (CRUD). No altera datos.
+  function abrirFinca(x) {
+    if (x.id === window.HP.selectedFincaId) { navigate('fincas'); return; }
+    window.HP.api.seleccionarFinca(x.id)
+      .then(() => toast('Finca activa: ' + x.nombre))
+      .catch((e) => toast('Error: ' + e.message));
+  }
   // Sin fincas y sin datos del fundo: no hay nada que mostrar -> guía inicial.
   if ((!f || !f.n_campanas) && !fincas.length) {
     return (
@@ -85,7 +93,7 @@ function GlobalDashboard() {
           <div className="finca-grid">
             {fincas.map(x => (
               <div key={x.id} className={'finca-card' + (x.id === selId ? ' sel' : '')}
-                   onClick={() => navigate('fincas')} title="Gestionar fincas">
+                   onClick={() => abrirFinca(x)} title={x.id === selId ? 'Gestionar fincas' : 'Ver esta finca'}>
                 <div className="fc-ico"><Icon name="map" size={16} /></div>
                 <div style={{ minWidth: 0 }}>
                   <div className="fc-name">
@@ -142,13 +150,20 @@ function GlobalDashboard() {
           </div>
         </div>
 
-        {/* Consolidado de recursos del fundo */}
+        {/* Consolidado de recursos del fundo — totales históricos (sin barra: no son
+            un ratio disponible/requerido, así que se muestran como cifra directa). */}
         <div className="card">
           <div className="card-head"><h3>Consolidado de recursos del fundo</h3></div>
-          <div style={{ padding: '8px 6px' }}>
-            <ResourceRow label="Mano de obra contratada (histórico)" detail={`${fmtNum(rec.jornales_acumulados || 0, 0)} jornales`} level="ok" pct={100} />
-            <ResourceRow label="Costo logístico/transporte acumulado" detail={`S/ ${fmtNum(rec.costo_logistico_acumulado || 0)}`} level="ok" pct={100} />
-            <div className="hint" style={{ padding: '10px 12px' }}>Acumulado de jornales y costos de transporte imputados a las campañas del fundo.</div>
+          <div style={{ padding: '6px' }}>
+            <div className="fundo-stat-row">
+              <span><Icon name="workers" size={14} /> Mano de obra contratada (histórico)</span>
+              <b>{fmtNum(rec.jornales_acumulados || 0, 0)} <span>jornales</span></b>
+            </div>
+            <div className="fundo-stat-row">
+              <span><Icon name="truck" size={14} /> Costo logístico/transporte acumulado</span>
+              <b><span>S/</span> {fmtNum(rec.costo_logistico_acumulado || 0)}</b>
+            </div>
+            <div className="hint" style={{ padding: '10px 12px' }}>Acumulado de jornales y costos de transporte imputados a las {nCamp} {nCamp === 1 ? 'campaña' : 'campañas'} de la finca.</div>
           </div>
         </div>
       </div>

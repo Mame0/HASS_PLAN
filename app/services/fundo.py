@@ -14,8 +14,11 @@ from app.models import Campana, Lote, Finca
 from app.services.prediccion import total_campana
 
 
-def _areas_por_lote():
-    return {l.id: (l.area_ha or 0) for l in Lote.query.all()}
+def _areas_por_lote(finca_id=None):
+    q = Lote.query
+    if finca_id is not None:
+        q = q.filter(Lote.finca_id == finca_id)
+    return {l.id: (l.area_ha or 0) for l in q.all()}
 
 
 def _produccion_campana(campana, areas):
@@ -33,12 +36,21 @@ def _produccion_campana(campana, areas):
     return pred["tn_total"], round(area, 4), "proyectada"
 
 
-def resumen_fundo():
-    """KPIs y series consolidadas del fundo a través de todas las campañas."""
-    areas = _areas_por_lote()
+def resumen_fundo(finca_id=None):
+    """KPIs y series consolidadas del fundo a través de todas las campañas.
+
+    Si se indica `finca_id`, todo se acota a ESA finca (área, campañas, tendencia y
+    recursos) y el encabezado lleva su nombre — coherente con el resto de la app, que
+    trabaja sobre la finca seleccionada. Sin `finca_id`, mantiene la foto global del
+    tenant (compatibilidad hacia atrás), rotulada con la primera finca.
+    """
+    areas = _areas_por_lote(finca_id)
     area_total_ha = round(sum(areas.values()), 4)
 
-    campanas = Campana.query.order_by(Campana.fecha_inicio).all()
+    campanas_q = Campana.query
+    if finca_id is not None:
+        campanas_q = campanas_q.filter(Campana.finca_id == finca_id)
+    campanas = campanas_q.order_by(Campana.fecha_inicio).all()
 
     tendencia = []
     historico_tn = 0.0
@@ -62,7 +74,8 @@ def resumen_fundo():
         if plan and plan.plan_transporte:
             costo_logistico_acumulado += sum(d.costo or 0 for d in plan.plan_transporte.despachos)
 
-    finca = Finca.query.first()
+    from app.models import db
+    finca = db.session.get(Finca, finca_id) if finca_id is not None else Finca.query.first()
     return {
         "fundo": {"id": finca.id, "nombre": finca.nombre, "distrito": finca.distrito} if finca else None,
         "area_total_ha": area_total_ha,

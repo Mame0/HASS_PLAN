@@ -200,8 +200,10 @@
       const fuentes = await get('/fuentes').catch(() => []);
       if (fuentes.length) fill('SOURCES', adaptSources(fuentes));
 
-      // Panel global del fundo (histórico multi-campaña, independiente de la activa).
-      window.HP.fundo = await get('/fundo/dashboard').catch(() => null);
+      // Panel global del fundo (histórico multi-campaña): acotado a la finca
+      // seleccionada para que sus KPIs concuerden con el nombre del encabezado.
+      const fincaQ = fincaSel ? '?finca_id=' + fincaSel.id : '';
+      window.HP.fundo = await get('/fundo/dashboard' + fincaQ).catch(() => null);
 
       if (activa) {
         const cid = activa.id;
@@ -270,7 +272,7 @@
       const f = await post('/fincas', { nombre: nombre || 'Mi Finca' });
       return f.id;
     },
-    fundoDashboard: () => get('/fundo/dashboard'),
+    fundoDashboard: () => get('/fundo/dashboard' + (window.HP.selectedFincaId ? '?finca_id=' + window.HP.selectedFincaId : '')),
     // Id de la campaña de trabajo (la activa que el front tiene cargada).
     campanaActivaId: () => (window.HP.activeCampaign && window.HP.activeCampaign.id) || null,
     // Crea el lote y lo asocia a la campaña de trabajo (entra SOLO a esa campaña).
