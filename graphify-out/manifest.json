@@ -1,0 +1,337 @@
+{
+  "C:\\Tesis\\sistema_palta\\app\\__init__.py": {
+    "mtime": 1781491716.1865714,
+    "ast_hash": "5e7bddee611af4176206ea5953f072d6",
+    "semantic_hash": "5e7bddee611af4176206ea5953f072d6"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\api\\__init__.py": {
+    "mtime": 1781150476.3616548,
+    "ast_hash": "6976cd19c0e60ae00bc970f54211a528",
+    "semantic_hash": "6976cd19c0e60ae00bc970f54211a528"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\api\\_common.py": {
+    "mtime": 1781182042.3572228,
+    "ast_hash": "c9dabf1f2d2894cac6f8cce1b32a9a9c",
+    "semantic_hash": "c9dabf1f2d2894cac6f8cce1b32a9a9c"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\api\\alertas.py": {
+    "mtime": 1781182077.031884,
+    "ast_hash": "a79ff0cb3ef959f8b58ebdc5099fdd75",
+    "semantic_hash": "a79ff0cb3ef959f8b58ebdc5099fdd75"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\api\\campanas.py": {
+    "mtime": 1781622370.9578466,
+    "ast_hash": "4a577b5af9f6b09810438c7d09457617",
+    "semantic_hash": "4a577b5af9f6b09810438c7d09457617"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\api\\clima.py": {
+    "mtime": 1781037687.0935671,
+    "ast_hash": "7d179cc1f474227dafa7e383437d6f6b",
+    "semantic_hash": "7d179cc1f474227dafa7e383437d6f6b"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\api\\cosecha.py": {
+    "mtime": 1781182133.7063453,
+    "ast_hash": "4be6bcdecbc49a18b39542b2f7075e0e",
+    "semantic_hash": "4be6bcdecbc49a18b39542b2f7075e0e"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\api\\derivados.py": {
+    "mtime": 1781182102.0118122,
+    "ast_hash": "5dc9dbcff88c704627ebabe8cf31da10",
+    "semantic_hash": "5dc9dbcff88c704627ebabe8cf31da10"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\api\\fincas.py": {
+    "mtime": 1781123760.6973913,
+    "ast_hash": "1dd74515eef708d66f1ae57f2d770687",
+    "semantic_hash": "1dd74515eef708d66f1ae57f2d770687"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\api\\fuentes.py": {
+    "mtime": 1781037656.59068,
+    "ast_hash": "9c1e7e893fa0937046ba27fcc6b46b48",
+    "semantic_hash": "9c1e7e893fa0937046ba27fcc6b46b48"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\api\\health.py": {
+    "mtime": 1781037351.8899274,
+    "ast_hash": "dfc20f0a5af1b65b94a1f90c78963983",
+    "semantic_hash": "dfc20f0a5af1b65b94a1f90c78963983"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\api\\lotes.py": {
+    "mtime": 1781123799.9661753,
+    "ast_hash": "2fa65e2470928f3d232ed08cd762aff1",
+    "semantic_hash": "2fa65e2470928f3d232ed08cd762aff1"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\api\\prediccion.py": {
+    "mtime": 1781122992.1315737,
+    "ast_hash": "8fcb170fa867403a3bb7eb39d1a98a35",
+    "semantic_hash": "8fcb170fa867403a3bb7eb39d1a98a35"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\api\\variables.py": {
+    "mtime": 1781123825.034169,
+    "ast_hash": "4cba3cf7dc8afd663044c033185f36a0",
+    "semantic_hash": "4cba3cf7dc8afd663044c033185f36a0"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\frontend\\api.js": {
+    "mtime": 1781622658.4989817,
+    "ast_hash": "fb3b55502ad560753ff0bb1064655366",
+    "semantic_hash": "fb3b55502ad560753ff0bb1064655366"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\frontend\\app.jsx": {
+    "mtime": 1781623038.242639,
+    "ast_hash": "184dc2c9da6742031aaa0d95f8060655",
+    "semantic_hash": "184dc2c9da6742031aaa0d95f8060655"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\frontend\\data.js": {
+    "mtime": 1781491676.0707633,
+    "ast_hash": "2baf9ffe47c267f5af1de28cef7d30dc",
+    "semantic_hash": "2baf9ffe47c267f5af1de28cef7d30dc"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\frontend\\icons.jsx": {
+    "mtime": 1781622494.99535,
+    "ast_hash": "3418539b8c91ec8b6e709053ca6feba8",
+    "semantic_hash": "3418539b8c91ec8b6e709053ca6feba8"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\frontend\\modules-a.jsx": {
+    "mtime": 1781622691.7038393,
+    "ast_hash": "bd654413536122d27929aef54d1263fd",
+    "semantic_hash": "bd654413536122d27929aef54d1263fd"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\frontend\\modules-b.jsx": {
+    "mtime": 1781491676.0031703,
+    "ast_hash": "cdd27d92886a2bb7e28c1e2f9384bae6",
+    "semantic_hash": "cdd27d92886a2bb7e28c1e2f9384bae6"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\frontend\\modules-c.jsx": {
+    "mtime": 1781491676.0335739,
+    "ast_hash": "fda4d90f409c3dcb3f289efbf5c7fb3d",
+    "semantic_hash": "fda4d90f409c3dcb3f289efbf5c7fb3d"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\frontend\\shell.jsx": {
+    "mtime": 1781492016.5697384,
+    "ast_hash": "915a0d670c3e66b62275e053148592f7",
+    "semantic_hash": "915a0d670c3e66b62275e053148592f7"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\frontend_bp.py": {
+    "mtime": 1781491709.3693457,
+    "ast_hash": "035adbf5b592156a9ce081ca8107e41b",
+    "semantic_hash": "035adbf5b592156a9ce081ca8107e41b"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\ml\\__init__.py": {
+    "mtime": 1781027962.2298148,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\ml\\modelo_meta.json": {
+    "mtime": 1781120072.343498,
+    "ast_hash": "425877be4faea9098954355873134d53",
+    "semantic_hash": "425877be4faea9098954355873134d53"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\ml\\predictor.py": {
+    "mtime": 1781123132.347846,
+    "ast_hash": "46b4243e914bf13e29e7f8dd3c1e6f88",
+    "semantic_hash": "46b4243e914bf13e29e7f8dd3c1e6f88"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\models.py": {
+    "mtime": 1781181955.8314784,
+    "ast_hash": "624dd50836bfb54ae4faf27281dddeb8",
+    "semantic_hash": "624dd50836bfb54ae4faf27281dddeb8"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\seed.py": {
+    "mtime": 1781037489.3692477,
+    "ast_hash": "857aee765373a1975d7b0f4b7492f0c0",
+    "semantic_hash": "857aee765373a1975d7b0f4b7492f0c0"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\services\\__init__.py": {
+    "mtime": 1781037359.0607708,
+    "ast_hash": "b667f7337aadb6456250bf55b4e327d1",
+    "semantic_hash": "b667f7337aadb6456250bf55b4e327d1"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\services\\alertas.py": {
+    "mtime": 1781150410.7455835,
+    "ast_hash": "008255510da20186d5a2ec58b2efc606",
+    "semantic_hash": "008255510da20186d5a2ec58b2efc606"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\services\\clima\\__init__.py": {
+    "mtime": 1781037365.386814,
+    "ast_hash": "005f78fa75f3bb924927e24f41d6f8ad",
+    "semantic_hash": "005f78fa75f3bb924927e24f41d6f8ad"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\services\\clima\\base.py": {
+    "mtime": 1781037522.549351,
+    "ast_hash": "2f4843860d057822796ec097e989ced9",
+    "semantic_hash": "2f4843860d057822796ec097e989ced9"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\services\\clima\\derivar.py": {
+    "mtime": 1781038890.4433217,
+    "ast_hash": "45ecf7045e3bca170ec26e905931e9af",
+    "semantic_hash": "45ecf7045e3bca170ec26e905931e9af"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\services\\clima\\nasa_power.py": {
+    "mtime": 1781037561.8169575,
+    "ast_hash": "949bb031fe1dde7f57837ae5d6d250c4",
+    "semantic_hash": "949bb031fe1dde7f57837ae5d6d250c4"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\services\\clima\\open_meteo.py": {
+    "mtime": 1781037548.8097682,
+    "ast_hash": "76662e33b3d7555415745cdb32055ca6",
+    "semantic_hash": "76662e33b3d7555415745cdb32055ca6"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\services\\clima\\sync.py": {
+    "mtime": 1781182015.5308757,
+    "ast_hash": "92370c2c9a9202308ba54ae794d5598a",
+    "semantic_hash": "92370c2c9a9202308ba54ae794d5598a"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\services\\dashboard.py": {
+    "mtime": 1781150430.2822945,
+    "ast_hash": "ff127ca09ea88d31880b0f44354b8599",
+    "semantic_hash": "ff127ca09ea88d31880b0f44354b8599"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\services\\derivados.py": {
+    "mtime": 1781144690.6358433,
+    "ast_hash": "e68ffdba65653223a6e7bd083a8137ca",
+    "semantic_hash": "e68ffdba65653223a6e7bd083a8137ca"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\services\\geo\\__init__.py": {
+    "mtime": 1781121865.1671205,
+    "ast_hash": "0acc3fe781542a9640d625ba1f6895a9",
+    "semantic_hash": "0acc3fe781542a9640d625ba1f6895a9"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\services\\geo\\calculo.py": {
+    "mtime": 1781121882.5983274,
+    "ast_hash": "490cbd139f2c4577bfb58dda69a54b2f",
+    "semantic_hash": "490cbd139f2c4577bfb58dda69a54b2f"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\services\\planificacion.py": {
+    "mtime": 1781144406.7267988,
+    "ast_hash": "a79f55889f54636b0869e726143c5ed9",
+    "semantic_hash": "a79f55889f54636b0869e726143c5ed9"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\services\\prediccion.py": {
+    "mtime": 1781181990.2484388,
+    "ast_hash": "ff3e65f0b3049e0c7d101c547f14bdd4",
+    "semantic_hash": "ff3e65f0b3049e0c7d101c547f14bdd4"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\services\\validacion.py": {
+    "mtime": 1781123697.0436656,
+    "ast_hash": "249e27b70010652e3d53435eb9065776",
+    "semantic_hash": "249e27b70010652e3d53435eb9065776"
+  },
+  "C:\\Tesis\\sistema_palta\\config.py": {
+    "mtime": 1781027868.5391173,
+    "ast_hash": "aa666762916c596c00e1471d68f99f7e",
+    "semantic_hash": "aa666762916c596c00e1471d68f99f7e"
+  },
+  "C:\\Tesis\\sistema_palta\\run.py": {
+    "mtime": 1781027956.4638002,
+    "ast_hash": "79c452d9f5b8a5dae77f8d1d98ee2359",
+    "semantic_hash": "79c452d9f5b8a5dae77f8d1d98ee2359"
+  },
+  "C:\\Tesis\\sistema_palta\\scripts\\analisis\\comparar_sitios.py": {
+    "mtime": 1781119806.7883832,
+    "ast_hash": "eab8af0288d133ab393e3e3348a47d6e",
+    "semantic_hash": "eab8af0288d133ab393e3e3348a47d6e"
+  },
+  "C:\\Tesis\\sistema_palta\\scripts\\analisis\\validar_flujo.py": {
+    "mtime": 1781149503.697611,
+    "ast_hash": "fa31ea8222b3d8c27f8bd72705788883",
+    "semantic_hash": "fa31ea8222b3d8c27f8bd72705788883"
+  },
+  "C:\\Tesis\\sistema_palta\\scripts\\analisis\\validar_nepena.py": {
+    "mtime": 1781122180.182711,
+    "ast_hash": "8563051b7a574f7558e826efe601f38a",
+    "semantic_hash": "8563051b7a574f7558e826efe601f38a"
+  },
+  "C:\\Tesis\\sistema_palta\\scripts\\analisis\\validar_nepena_multi.py": {
+    "mtime": 1781119607.318862,
+    "ast_hash": "cbab93d0162cb8f03376513b22e56972",
+    "semantic_hash": "cbab93d0162cb8f03376513b22e56972"
+  },
+  "C:\\Tesis\\sistema_palta\\scripts\\ml\\entrenar.py": {
+    "mtime": 1781120031.8829024,
+    "ast_hash": "b15757a29a22793c3d0a1f6e3d2eb6ff",
+    "semantic_hash": "b15757a29a22793c3d0a1f6e3d2eb6ff"
+  },
+  "C:\\Tesis\\sistema_palta\\scripts\\seed_demo.py": {
+    "mtime": 1781491935.5754945,
+    "ast_hash": "b2d1585959c9706cf746a0b7e03f9fd3",
+    "semantic_hash": "b2d1585959c9706cf746a0b7e03f9fd3"
+  },
+  "C:\\Tesis\\sistema_palta\\tests\\conftest.py": {
+    "mtime": 1781122188.2963934,
+    "ast_hash": "47f36c8ecdd1936ffeee0174fc3f5260",
+    "semantic_hash": "47f36c8ecdd1936ffeee0174fc3f5260"
+  },
+  "C:\\Tesis\\sistema_palta\\tests\\test_alertas.py": {
+    "mtime": 1781150532.0933723,
+    "ast_hash": "10e5f59d7654bce83e4562c13008613f",
+    "semantic_hash": "10e5f59d7654bce83e4562c13008613f"
+  },
+  "C:\\Tesis\\sistema_palta\\tests\\test_cosecha.py": {
+    "mtime": 1781127444.785962,
+    "ast_hash": "4aa18dcb938097313272550641eeffbe",
+    "semantic_hash": "4aa18dcb938097313272550641eeffbe"
+  },
+  "C:\\Tesis\\sistema_palta\\tests\\test_crud.py": {
+    "mtime": 1781125013.842903,
+    "ast_hash": "57f246fe8a2f22b365b23cb471d7bb5d",
+    "semantic_hash": "57f246fe8a2f22b365b23cb471d7bb5d"
+  },
+  "C:\\Tesis\\sistema_palta\\tests\\test_derivados.py": {
+    "mtime": 1781144703.0518289,
+    "ast_hash": "3c8f2a4b26cfbe61a681713c4751c18c",
+    "semantic_hash": "3c8f2a4b26cfbe61a681713c4751c18c"
+  },
+  "C:\\Tesis\\sistema_palta\\tests\\test_geo.py": {
+    "mtime": 1781122199.3296735,
+    "ast_hash": "aa8b3e47ca6804bc5ad43eccfb3d7f2b",
+    "semantic_hash": "aa8b3e47ca6804bc5ad43eccfb3d7f2b"
+  },
+  "C:\\Tesis\\sistema_palta\\tests\\test_models.py": {
+    "mtime": 1781122210.283142,
+    "ast_hash": "278f736e7c08b225663fb05da90e189a",
+    "semantic_hash": "278f736e7c08b225663fb05da90e189a"
+  },
+  "C:\\Tesis\\sistema_palta\\tests\\test_prediccion.py": {
+    "mtime": 1781123053.7718778,
+    "ast_hash": "d1fea257b4ffe3f778bc3aa9748dfdf0",
+    "semantic_hash": "d1fea257b4ffe3f778bc3aa9748dfdf0"
+  },
+  "C:\\Tesis\\sistema_palta\\CLAUDE.md": {
+    "mtime": 1781563256.2094412,
+    "ast_hash": "881a3b092588f9d5e53c392d098e6761",
+    "semantic_hash": "881a3b092588f9d5e53c392d098e6761"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\frontend\\HassPlan.html": {
+    "mtime": 1781565456.8404124,
+    "ast_hash": "b028665ff91b7711fa821064301ce56c",
+    "semantic_hash": "b028665ff91b7711fa821064301ce56c"
+  },
+  "C:\\Tesis\\sistema_palta\\docs\\ARQUITECTURA.md": {
+    "mtime": 1781563285.675338,
+    "ast_hash": "0e8dd823f19a6d11fa3b8a59db10a50e",
+    "semantic_hash": "0e8dd823f19a6d11fa3b8a59db10a50e"
+  },
+  "C:\\Tesis\\sistema_palta\\docs\\DICCIONARIO_DATOS.md": {
+    "mtime": 1781150665.5984256,
+    "ast_hash": "1be11940175d090bf5818dc73882396f",
+    "semantic_hash": "1be11940175d090bf5818dc73882396f"
+  },
+  "C:\\Tesis\\sistema_palta\\docs\\REFERENCIA_LA_JOYA.md": {
+    "mtime": 1781149482.6474783,
+    "ast_hash": "613862e34d9fceb6935a287c35e514e7",
+    "semantic_hash": "613862e34d9fceb6935a287c35e514e7"
+  },
+  "C:\\Tesis\\sistema_palta\\docs\\ROADMAP.md": {
+    "mtime": 1781563305.1855254,
+    "ast_hash": "fe206ad4c34322851f7a9abf72bd43d7",
+    "semantic_hash": "fe206ad4c34322851f7a9abf72bd43d7"
+  },
+  "C:\\Tesis\\sistema_palta\\requirements.txt": {
+    "mtime": 1781122250.000058,
+    "ast_hash": "e6a40cc979cf69b7b9aa7acf18fe2ef3",
+    "semantic_hash": "e6a40cc979cf69b7b9aa7acf18fe2ef3"
+  },
+  "C:\\Tesis\\sistema_palta\\app\\frontend\\mapa.jsx": {
+    "mtime": 1781565567.8591876,
+    "ast_hash": "b985e01418cf8d4fc464d15ee0296783",
+    "semantic_hash": "b985e01418cf8d4fc464d15ee0296783"
+  }
+}

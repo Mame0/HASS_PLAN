@@ -1,0 +1,110 @@
+{
+  "features": [
+    "edad_campo",
+    "edad_prod",
+    "riego_m3ha",
+    "hfrio_19",
+    "hfrio_14_19",
+    "hfrio_14",
+    "hfrio_15",
+    "hac_20_25",
+    "hac_25",
+    "humedad",
+    "eto",
+    "t_min",
+    "t_max",
+    "t_prom",
+    "lluvia"
+  ],
+  "rangos_entrenamiento": {
+    "edad_campo": [
+      0.0,
+      13.0
+    ],
+    "edad_prod": [
+      0.0,
+      11.0
+    ],
+    "riego_m3ha": [
+      10685.0,
+      22022.0
+    ],
+    "hfrio_19": [
+      2264.0,
+      4722.0
+    ],
+    "hfrio_14_19": [
+      2256.0,
+      4614.0
+    ],
+    "hfrio_14": [
+      8.0,
+      265.0
+    ],
+    "hfrio_15": [
+      45.0,
+      782.0
+    ],
+    "hac_20_25": [
+      2571.0,
+      4443.0
+    ],
+    "hac_25": [
+      290.0,
+      1107.0
+    ],
+    "humedad": [
+      74.8,
+      77.18
+    ],
+    "eto": [
+      1391.45,
+      1551.89
+    ],
+    "t_min": [
+      16.01,
+      18.22
+    ],
+    "t_max": [
+      22.61,
+      25.16
+    ],
+    "t_prom": [
+      18.85,
+      21.2
+    ],
+    "lluvia": [
+      27.1,
+      91.3
+    ]
+  },
+  "metricas": {
+    "r2_split": 0.612,
+    "mae": 4.61,
+    "rmse": 5.8,
+    "r2_groupkfold": -0.597,
+    "confianza_media": 84.4
+  },
+  "metricas_baseline": {
+    "r2_split": 0.57,
+    "mae": 5.01,
+    "rmse": 6.1,
+    "r2_groupkfold": -0.877,
+    "confianza_media": 78.9
+  },
+  "hiperparametros": {
+    "n_estimators": 300,
+    "max_depth": 4,
+    "max_features": 1.0,
+    "min_samples_leaf": 1
+  },
+  "pipeline": {
+    "fuente_clima": "open_meteo",
+    "sitio_entrenamiento": "Nepena (Fundo Los Paltos)",
+    "lat": -9.16,
+    "lon": -78.43,
+    "ventana": "jul-jun por campana",
+    "n_filas": 215
+  },
+  "nota": "Clima derivado por API (no columnas originales). Modelo regularizado (max_features<1 + min_samples_leaf) para evitar que las climaticas colineales dominen, SIN quitarlas. Tuneado contra GroupKFold. Usar rangos_entrenamiento para marcar OOD (ej. La Joya)."
+}

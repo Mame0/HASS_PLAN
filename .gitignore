@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Base de datos local (se regenera)
+instance/
+*.db
+
+# Artefactos del modelo grandes (opcional: versionar modelo.pkl si se quiere reproducibilidad)
+# app/ml/modelo.pkl
+
+# Sistema operativo / editor
+.DS_Store
+.vscode/
+.idea/
