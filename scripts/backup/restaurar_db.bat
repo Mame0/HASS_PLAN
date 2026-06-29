@@ -38,7 +38,13 @@ echo.
 echo === 1/4  Creando los roles de la app (si no existen) ===
 "%PGBIN%\psql.exe" -U postgres -h %PGHOST% -d postgres -v ON_ERROR_STOP=0 -c "DO $$ BEGIN IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname='app_palta') THEN CREATE ROLE app_palta LOGIN PASSWORD '71804217' NOSUPERUSER NOBYPASSRLS NOCREATEDB NOCREATEROLE; END IF; IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname='palta_auth') THEN CREATE ROLE palta_auth NOLOGIN BYPASSRLS; END IF; END $$;"
 
-echo === 2/4  Creando la base de datos "%PGDB%" (vacia) ===
+echo === 2/4  Recreando la base de datos "%PGDB%" (vacia) ===
+echo.
+echo  *** ATENCION ***  Si ya existe una base "%PGDB%", se BORRARA por completo
+echo  y se reemplazara con la del respaldo. Cierra la app antes de continuar.
+echo  Pulsa una tecla para continuar, o cierra esta ventana para cancelar.
+pause >nul
+"%PGBIN%\psql.exe" -U postgres -h %PGHOST% -d postgres -c "DROP DATABASE IF EXISTS %PGDB% WITH (FORCE);"
 "%PGBIN%\psql.exe" -U postgres -h %PGHOST% -d postgres -c "CREATE DATABASE %PGDB%;"
 
 echo === 3/4  Restaurando los datos desde %DUMP% ===
