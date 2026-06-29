@@ -13,6 +13,9 @@ env/
 instance/
 *.db
 
+# Respaldos de PostgreSQL (la data viaja por USB, no por git)
+*.dump
+
 # Artefactos del modelo grandes (opcional: versionar modelo.pkl si se quiere reproducibilidad)
 # app/ml/modelo.pkl
 
