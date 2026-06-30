@@ -145,13 +145,16 @@ sistema_palta/
 │   │   ├── predictor.py · modelo.pkl · modelo_meta.json
 │   └── frontend/             #   front HassPlan servido por Flask (FRONT)
 │       └── *.jsx / api.js     #     shell, módulos a/b/c, mapa, auth, admin, fincas
-├── tests/                    # pruebas pytest (BD temporal aislada) — 47 verdes
+├── tests/                    # pruebas pytest (BD temporal aislada) — 51 verdes
 │   ├── conftest.py           #   fixtures (app + BD por test)
 │   ├── test_geo.py · test_models.py · test_aislamiento.py (RLS) · …
 ├── scripts/                  # utilidades fuera del runtime (no se importan en la app)
 │   ├── ml/entrenar.py        #   reentrena el RF sobre el pipeline de la API
 │   ├── analisis/             #   validación del motor (Nepeña, comparación de sitios)
-│   └── migracion/            #   migrar_datos.py · verificar_rls.py (SQLite → PostgreSQL)
+│   ├── migracion/            #   migrar_datos.py · verificar_rls.py (SQLite → PostgreSQL)
+│   ├── backup/               #   respaldar_db.bat · restaurar_db.bat (dump/restore PostgreSQL)
+│   ├── migrar_lote_campana.py #   crea la tabla puente LoteCampana y backfillea
+│   └── seed_demo.py · seed_demo_campanas.py  #   datos de demostración
 ├── sql/                      # esquema PostgreSQL: 01_ddl_base · 02_rls · 04..06 (ALTERs)
 ├── docs/                     # documentación de tesis
 │   ├── ARQUITECTURA.md · ROADMAP.md · DICCIONARIO_DATOS.md · MIGRACION_POSTGRES.md · REFERENCIA_LA_JOYA.md
@@ -275,7 +278,7 @@ transfiere; lo que sí transfiere es la columna vertebral edad/riego.
 | **SaaS** Multi-tenant PostgreSQL + RLS | migración SQLite→PostgreSQL; `productor_id` + FK compuestas + RLS; login/admin (`auth.py`, `admin.py`, `tenant.py`); ver §14 y `MIGRACION_POSTGRES.md` | ✅ **hecho** (test_aislamiento.py) |
 | **F7** Cierre + recalibración | cosecha real de La Joya → reentrenar | 🔲 **siguiente** |
 
-> **Estado (27-jun-2026):** **47 tests verdes.** Backend de dominio (F0.5–F6) + FRONT (10 módulos
+> **Estado (29-jun-2026):** **51 tests verdes.** Backend de dominio (F0.5–F6) + FRONT (10 módulos
 > con datos reales) + capa SaaS multi-tenant (PostgreSQL/RLS, login, admin) **completos**.
 >
 > **FRONT — qué quedó cableado:** Dashboard, Lotes, Campaña, **Predicción IA** (`predecirLote`),

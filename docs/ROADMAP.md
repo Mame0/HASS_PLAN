@@ -25,7 +25,7 @@
 > | **SaaS** Multi-tenant PostgreSQL + RLS | (nuevo) | ✅ **hecho** (`ARQUITECTURA.md` §14, `MIGRACION_POSTGRES.md`) |
 > | **F7** Cierre + recalibración | Track A Fase 7 | 🔲 **siguiente y último** |
 >
-> **Estado al 27-jun-2026:** **47 tests verdes.** Solo queda **F7** (cosecha real de La Joya → recalibrar + doc final).
+> **Estado al 29-jun-2026:** **51 tests verdes.** Solo queda **F7** (cosecha real de La Joya → recalibrar + doc final).
 > Las secciones "Fase N" y "Track B" de abajo se conservan como **detalle histórico**.
 
 ---

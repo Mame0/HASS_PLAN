@@ -30,7 +30,7 @@ pip install -r requirements.txt        # Flask 3, Flask-SQLAlchemy, scikit-learn
 DATABASE_URL=postgresql://app_palta:CLAVE@localhost:5432/palta python run.py   # → http://127.0.0.1:5000
                                        # el esquema PostgreSQL lo crean los scripts sql/ (no create_all)
 
-python -m pytest                       # toda la suite (47 tests; usan SQLite temporal por test, no tocan PostgreSQL)
+python -m pytest                       # toda la suite (51 tests; usan SQLite temporal por test, no tocan PostgreSQL)
 python -m pytest tests/test_aislamiento.py   # tests de aislamiento multi-tenant (RLS)
 python -m pytest -q                    # resumen breve
 
@@ -160,7 +160,7 @@ integridad referencial en cascada, casos borde, pytest verde); un commit por fas
   **SaaS** (PostgreSQL multi-tenant con RLS — ver `docs/MIGRACION_POSTGRES.md` y `ARQUITECTURA.md` §14).
 - **Siguiente y último:** **F7** — cargar la **cosecha real de La Joya** (`ResultadoCosecha`), comparar
   predicho vs real (`error_vs()`), evaluar reentrenamiento y redactar la documentación final de la tesis.
-- **47 tests verdes** (incl. `test_aislamiento.py` para el aislamiento multi-tenant).
+- **51 tests verdes** (incl. `test_aislamiento.py` para el aislamiento multi-tenant).
 
 ## Particularidades del entorno
 

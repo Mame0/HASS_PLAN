@@ -9,7 +9,7 @@ REM Conexion a PostgreSQL (rol de la app). Cambia la clave si la cambiaste.
 set DATABASE_URL=postgresql://app_palta:71804217@localhost:5432/palta
 
 REM Clave para firmar las sesiones de login. Cambiala por una propia.
-set SECRET_KEY=cambia-esta-clave-secreta
+set SECRET_KEY=71804217
 
 echo Arrancando HassPlan contra PostgreSQL...
 echo Abre el navegador en http://localhost:5000
