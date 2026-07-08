@@ -84,6 +84,9 @@ function esSuperadmin() {
 function Sidebar({ route, navigate, alertsCount }) {
   const active = ROUTE_TO_NAV[route] || 'global_dashboard';
   const campNombre = (window.HP.activeCampaign && window.HP.activeCampaign.nombre) || 'Sin campaña activa';
+  // Badge de Logística = nº de materiales con déficit (pico semanal > stock). Real por
+  // tenant (antes estaba hardcodeado a "1", se veía hasta en cuentas vacías).
+  const logisticsDeficit = (window.HP.INVENTORY || []).filter((i) => (i.required || 0) > (i.avail || 0)).length;
 
   const renderItem = (it) => (
     <div
@@ -96,8 +99,8 @@ function Sidebar({ route, navigate, alertsCount }) {
       {it.id === 'alerts' && alertsCount > 0 && (
         <span className="nav-count">{alertsCount}</span>
       )}
-      {it.id === 'logistics' && (
-        <span className="nav-count warn">1</span>
+      {it.id === 'logistics' && logisticsDeficit > 0 && (
+        <span className="nav-count warn">{logisticsDeficit}</span>
       )}
     </div>
   );

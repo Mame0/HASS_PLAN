@@ -508,7 +508,9 @@
 
   /* Bar chart cells */
   .bar-row { display: grid; grid-template-columns: 60px 1fr 80px; align-items: center; gap: 10px; font-size: 12.5px; }
-  .bar-row .lbl { color: var(--ink-3); font-family: 'Geist Mono', monospace; }
+  .bar-row .lbl { color: var(--ink-3); font-family: 'Geist Mono', monospace; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  /* Variante para nombres largos de campaña (el default 60px es para etiquetas cortas tipo S01). */
+  .bar-row-camp { grid-template-columns: 150px 1fr 130px; }
   .bar-cell { position: relative; height: 22px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
   .bar-cell .planned { position: absolute; top: 0; bottom: 0; left: 0; background: repeating-linear-gradient(45deg, #D6CFB4 0 4px, #C9C1A1 4px 8px); }
   .bar-cell .real    { position: absolute; top: 4px; bottom: 4px; left: 0; background: linear-gradient(90deg, var(--primary), #6B9A1F); border-radius: 2px; }

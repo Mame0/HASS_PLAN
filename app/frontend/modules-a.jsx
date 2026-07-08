@@ -133,8 +133,8 @@ function GlobalDashboard() {
             {tend.length ? (
               <div style={{ display: 'grid', gap: 10 }}>
                 {tend.map(t => (
-                  <div className="bar-row" key={t.campana_id}>
-                    <span className="lbl" title={t.nombre} style={{ width: 120 }}>{t.nombre}</span>
+                  <div className="bar-row bar-row-camp" key={t.campana_id}>
+                    <span className="lbl" title={t.nombre}>{t.nombre}</span>
                     <div className="bar-cell">
                       <span className={t.tipo === 'real' ? 'real' : 'planned'} style={{ width: `${((t.tn_total || 0) / maxTn) * 100}%` }}></span>
                     </div>
@@ -849,21 +849,6 @@ function SectorNew() {
     }
   }
 
-  const [buscar, setBuscar] = useState('');
-  const [buscando, setBuscando] = useState(false);
-  const [flyTo, setFlyTo] = useState(null);
-  async function irABuscar() {
-    if (!buscar.trim()) return;
-    setBuscando(true);
-    try {
-      const r = await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(buscar));
-      const d = await r.json();
-      if (d && d[0]) setFlyTo([+d[0].lat, +d[0].lon, Date.now()]);
-      else toast('No se encontró ese lugar.');
-    } catch (e) { toast('Sin conexión para buscar.'); }
-    finally { setBuscando(false); }
-  }
-
   return (
     <div className="page" style={{ maxWidth: 1100 }}>
       <PageHeader eyebrow="M3 · Nuevo lote" title="Registrar lote"
@@ -907,18 +892,7 @@ function SectorNew() {
             <div className="right mono" style={{ fontSize: 11, color: 'var(--muted)' }}>satélite Esri</div>
           </div>
           <div className="card-pad">
-            <div className="hstack" style={{ marginBottom: 10 }}>
-              <div className="hstack grow" style={{ background: 'var(--surface)', border: '1px solid var(--border-2)', borderRadius: 8, padding: '0 10px', height: 38, gap: 8 }}>
-                <Icon name="search" size={16} />
-                <input style={{ border: 0, outline: 0, background: 'transparent', height: 36, fontSize: 14, width: '100%' }}
-                  placeholder="Buscar tu zona (ej. La Joya, Arequipa) y presiona Enter…"
-                  value={buscar} onChange={e => setBuscar(e.target.value)}
-                  onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); irABuscar(); } }} />
-              </div>
-              <button className="btn primary" onClick={irABuscar} disabled={buscando}>
-                <Icon name="search" size={14} /> {buscando ? 'Buscando…' : 'Ir'}</button>
-            </div>
-            <LeafletMap height={440} draw onPolygon={setGeom} flyTo={flyTo} />
+            <LeafletMap height={440} draw search onPolygon={setGeom} />
           </div>
         </div>
 

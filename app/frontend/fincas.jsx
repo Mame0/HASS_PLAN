@@ -116,10 +116,10 @@ function FincaForm({ finca, onDone, onCancel, toast }) {
         <div className="field">
           <label>Contorno de la finca (opcional)</label>
           <div className="hint" style={{ marginBottom: 8 }}>
-            Usa la herramienta de polígono (arriba a la derecha del mapa) para dibujar el contorno.
-            El sistema deriva el centro automáticamente.
+            Busca tu zona para ubicarte, luego usa la herramienta de polígono (arriba a la derecha
+            del mapa) para dibujar el contorno. El sistema deriva el centro automáticamente.
           </div>
-          <LeafletMap height={340} draw={true} lotes={lotesMapa} onPolygon={(g) => setGeometria(g)} />
+          <LeafletMap height={340} draw={true} search lotes={lotesMapa} onPolygon={(g) => setGeometria(g)} />
           {geometria && <div className="hint" style={{ marginTop: 6 }}>✓ Nuevo contorno listo para guardar.</div>}
         </div>
 

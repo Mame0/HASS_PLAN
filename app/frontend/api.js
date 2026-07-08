@@ -198,12 +198,20 @@
         || camps.find((c) => c.estado === 'activa') || camps[0];
 
       const fuentes = await get('/fuentes').catch(() => []);
-      if (fuentes.length) fill('SOURCES', adaptSources(fuentes));
+      fill('SOURCES', adaptSources(fuentes));
 
       // Panel global del fundo (histórico multi-campaña): acotado a la finca
       // seleccionada para que sus KPIs concuerden con el nombre del encabezado.
       const fincaQ = fincaSel ? '?finca_id=' + fincaSel.id : '';
       window.HP.fundo = await get('/fundo/dashboard' + fincaQ).catch(() => null);
+
+      // Reset de los datos por-campaña: se limpian SIEMPRE (aunque no haya campaña
+      // activa ni lotes) para NO dejar los datos simulados de data.js en un tenant
+      // vacío — bug multi-tenant: una cuenta sin datos mostraba lotes/alertas demo.
+      fill('ALERTS', []); fill('WEEKS', []); fill('INVENTORY', []); fill('FINCAS', []);
+      window.HP.manoObra = null; window.HP.logistica = null; window.HP.transporte = null;
+      window.HP.dashboard = null; window.HP.plan = null; window.HP.estimadoTn = 0;
+      window.HP.activeCampaign = null;
 
       if (activa) {
         const cid = activa.id;
@@ -219,7 +227,7 @@
         fill('ALERTS', adaptAlerts(alertas));
         fill('WEEKS', adaptWeeks(plan));
         fill('INVENTORY', adaptInventory(inv, log));
-        if (lotes.length) fill('FINCAS', lotes);   // SECTORS es la misma ref -> se actualiza
+        fill('FINCAS', lotes);   // SECTORS es la misma ref -> se actualiza (vacío = se limpia)
         window.HP.manoObra = manoObra;   // M6: parámetros + jornales/cuadrillas/déficit por semana
         window.HP.logistica = log;       // M7: requerimiento de materiales por semana (real)
         window.HP.transporte = transporte; // M8: camiones/viajes/costo/déficit por semana (real)
