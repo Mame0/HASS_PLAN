@@ -19,12 +19,13 @@ def register_api(app):
     from app.api.clima import bp as clima_bp
     from app.api.prediccion import bp as prediccion_bp
     from app.api.cosecha import bp as cosecha_bp
+    from app.api.resultado import bp as resultado_bp
     from app.api.derivados import bp as derivados_bp
     from app.api.alertas import bp as alertas_bp
     from app.api.fundo import bp as fundo_bp
 
     blueprints = (health_bp, auth_bp, admin_bp, fuentes_bp, campanas_bp, fincas_bp, lotes_bp,
-                  variables_bp, clima_bp, prediccion_bp, cosecha_bp, derivados_bp,
+                  variables_bp, clima_bp, prediccion_bp, cosecha_bp, resultado_bp, derivados_bp,
                   alertas_bp, fundo_bp)
     for bp in blueprints:
         app.register_blueprint(bp, url_prefix="/api")

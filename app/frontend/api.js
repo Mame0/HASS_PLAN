@@ -308,6 +308,10 @@
     reprogramarSemana: (semanaId, tn) => put('/semanas/' + semanaId, { tn_planificada: tn }),
     // F7: cosecha real por semana (real vs planificado). tn=null borra el registro.
     registrarCosechaReal: (semanaId, tn) => put('/semanas/' + semanaId + '/real', { tn_real: tn }),
+    // F7: validación predicho vs real POR LOTE (cierre del modelo).
+    resultadosCampana: (campanaId) => get('/campanas/' + campanaId + '/resultados'),
+    guardarResultado: (loteId, campanaId, body) => put('/lotes/' + loteId + '/resultado?campana_id=' + campanaId, body),
+    borrarResultado: (loteId, campanaId) => del('/lotes/' + loteId + '/resultado?campana_id=' + campanaId),
     // M6 Mano de obra: configura productividad/cuadrillas y calcula jornales por semana.
     configManoObra: (campanaId, body) => put('/campanas/' + campanaId + '/mano-obra', body),
     // M7 Logística: fija el stock de materiales (recalcula requerimientos por semana).

@@ -4,6 +4,7 @@ const CAMPAIGN_ROUTES = new Set([
   'campaign_summary', 'sectors', 'sector_new', 'sector_det', 'sector_vars',
   'intelligence', 'intelligence_res', 'harvest', 'harvest_cal',
   'labor', 'labor_req', 'logistics', 'logistics_req', 'transport', 'transport_plan',
+  'validacion',
 ]);
 
 function App({ initialRoute }) {
@@ -71,6 +72,7 @@ function View({ route }) {
     case 'logistics_req':     return <Logistics />;
     case 'transport':         return <Transport />;
     case 'transport_plan':    return <Transport />;
+    case 'validacion':        return <Validacion />;
     case 'alerts':            return <Alerts />;
     case 'sources':           return <DataSources />;
     case 'admin_productores': return <AdminPanel />;

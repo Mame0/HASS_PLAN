@@ -530,6 +530,149 @@ function HarvestCalendar() {
   );
 }
 
+/* ===================== F7 — Validación (predicho vs real) ===================== */
+// Cierre de la tesis: se ingresa la cosecha REAL (Tn/Ha) por lote y el sistema la
+// compara contra la predicción del RF (error absoluto y %), con MAE/MAPE de campaña.
+function Validacion() {
+  const { toast } = useRouter();
+  const ro = esCampanaCerrada();
+  const campanaId = HP_B.activeCampaign && HP_B.activeCampaign.id;
+  const [data, setData] = useState(null);     // {por_lote, resumen}
+  const [loading, setLoading] = useState(true);
+
+  const cargar = useCallback(async () => {
+    if (!campanaId) { setData(null); setLoading(false); return; }
+    setLoading(true);
+    try { setData(await window.HP.api.resultadosCampana(campanaId)); }
+    catch (e) { toast('Error: ' + e.message); setData(null); }
+    finally { setLoading(false); }
+  }, [campanaId, toast]);
+  useEffect(() => { cargar(); }, [cargar]);
+
+  const f2 = (n) => (n == null ? '—' : Number(n).toFixed(2));
+  const f1 = (n) => (n == null ? '—' : Number(n).toFixed(1));
+  const r = data && data.resumen;
+
+  if (!campanaId) {
+    return (
+      <div className="page">
+        <PageHeader eyebrow="F7 · Validación del modelo" title="Predicho vs Real" />
+        <div className="card card-pad"><div className="empty">No hay campaña activa. Selecciona o crea una campaña.</div></div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="page" style={{ maxWidth: 1180 }}>
+      <PageHeader eyebrow="F7 · Validación del modelo" title="Predicho vs Real"
+        sub="Ingresa la cosecha real (Tn/Ha) de cada lote para validar el modelo contra La Joya. El error se calcula automáticamente." />
+
+      {r && (
+        <div className="kpi-grid" style={{ marginBottom: 16 }}>
+          <Kpi icon="sectors" label="Lotes con cosecha real" value={r.n_con_real + ' / ' + r.n_lotes} unit=""
+            foot={<span>{r.n_comparables} comparables (con predicción)</span>} />
+          <Kpi icon="leaf" label="MAE" value={f2(r.mae)} unit="Tn/Ha" foot={<span>error absoluto medio</span>} />
+          <Kpi icon="brain" label="MAPE" value={f1(r.mape)} unit="%" foot={<span>error relativo medio</span>} />
+          <Kpi icon="check" label="Precisión" value={r.mape != null ? f1(100 - r.mape) : '—'} unit="%" foot={<span>100 − MAPE</span>} />
+        </div>
+      )}
+
+      <div className="card">
+        <div className="card-head"><h3>Cosecha real por lote</h3>
+          <div className="right mono" style={{ fontSize: 11, color: 'var(--muted)' }}>rendimiento en Tn/Ha</div>
+        </div>
+        {loading ? (
+          <div className="empty">Cargando…</div>
+        ) : !data || !data.por_lote.length ? (
+          <div className="empty">La campaña no tiene lotes. Agrégalos en “Lotes”.</div>
+        ) : (
+          <table className="tbl">
+            <thead>
+              <tr>
+                <th>Lote</th><th className="num">Predicho</th><th className="num">Real (editable)</th>
+                <th className="num">Frutos/árbol</th><th className="num">Peso fruto (g)</th>
+                <th className="num">Error</th><th className="num">Error %</th><th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.por_lote.map((row) => (
+                <ResultadoRow key={row.lote_id} row={row} campanaId={campanaId} ro={ro} toast={toast} onSaved={cargar} />
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+
+      <div className="hint" style={{ marginTop: 10 }}>
+        <b>MAE</b> = error absoluto medio (Tn/Ha) · <b>MAPE</b> = error relativo medio (%). El semáforo del error marca
+        ≤10% verde, ≤25% ámbar, &gt;25% rojo. <b>Frutos/árbol</b> y <b>peso de fruto</b> se registran como referencia
+        agronómica: NO entran al modelo (se conocen solo tras cosechar) pero documentan la cosecha.
+      </div>
+    </div>
+  );
+}
+
+function ResultadoRow({ row, campanaId, ro, toast, onSaved }) {
+  const [real, setReal] = useState(row.tn_ha_real != null ? String(row.tn_ha_real) : '');
+  const [frutos, setFrutos] = useState(row.frutos_arbol != null ? String(row.frutos_arbol) : '');
+  const [peso, setPeso] = useState(row.peso_fruto != null ? String(row.peso_fruto) : '');
+  const [busy, setBusy] = useState(false);
+  const f2 = (n) => (n == null ? '—' : Number(n).toFixed(2));
+  const inp = { width: 78, textAlign: 'right' };
+
+  async function guardar() {
+    if (ro) { toast('Campaña cerrada — solo lectura'); return; }
+    if (String(real).trim() === '') { toast('Ingresa el rendimiento real (Tn/Ha) de ' + row.lote); return; }
+    setBusy(true);
+    try {
+      await window.HP.api.guardarResultado(row.lote_id, campanaId, {
+        tn_ha_real: parseFloat(real),
+        frutos_arbol: String(frutos).trim() === '' ? null : parseFloat(frutos),
+        peso_fruto: String(peso).trim() === '' ? null : parseFloat(peso),
+      });
+      toast('Cosecha real de ' + row.lote + ' guardada ✓');
+      await onSaved();
+    } catch (e) { toast('Error: ' + (e.message || e)); }
+    finally { setBusy(false); }
+  }
+  async function borrar() {
+    if (ro) { toast('Campaña cerrada — solo lectura'); return; }
+    setBusy(true);
+    try {
+      await window.HP.api.borrarResultado(row.lote_id, campanaId);
+      toast('Cosecha real de ' + row.lote + ' borrada');
+      await onSaved();
+    } catch (e) { toast('Error: ' + (e.message || e)); }
+    finally { setBusy(false); }
+  }
+
+  return (
+    <tr>
+      <td className="strong">{row.lote}</td>
+      <td className="num mono">{row.tn_ha_predicho != null ? f2(row.tn_ha_predicho)
+        : <span style={{ color: 'var(--muted)' }}>sin pred.</span>}</td>
+      <td className="num"><input className="mono" style={inp} value={real} disabled={ro || busy} placeholder="—"
+        onChange={(e) => setReal(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') guardar(); }} /></td>
+      <td className="num"><input className="mono" style={inp} value={frutos} disabled={ro || busy} placeholder="—"
+        onChange={(e) => setFrutos(e.target.value)} /></td>
+      <td className="num"><input className="mono" style={inp} value={peso} disabled={ro || busy} placeholder="—"
+        onChange={(e) => setPeso(e.target.value)} /></td>
+      <td className="num mono">{f2(row.error_abs)}</td>
+      <td className="num"><ErrBadge pct={row.error_pct} /></td>
+      <td className="hstack">
+        <button className="btn sm" onClick={guardar} disabled={ro || busy}>Guardar</button>
+        {row.tiene_real && <button className="btn sm ghost" onClick={borrar} disabled={ro || busy}>Borrar</button>}
+      </td>
+    </tr>
+  );
+}
+
+function ErrBadge({ pct }) {
+  if (pct == null) return <span style={{ color: 'var(--muted)' }}>—</span>;
+  const tone = pct <= 10 ? 'ok' : pct <= 25 ? 'warn' : 'crit';
+  return <Badge tone={tone}>{pct.toFixed(1)}%</Badge>;
+}
+
 /* ===================== M6 — Labor ===================== */
 function Labor() {
   const { toast } = useRouter();

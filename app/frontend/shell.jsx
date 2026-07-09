@@ -17,6 +17,8 @@ const NAV = [
     { id: 'labor',            label: 'Mano de obra',            icon: 'workers' },
     { id: 'logistics',        label: 'Logística',               icon: 'crate' },
     { id: 'transport',        label: 'Transporte',              icon: 'truck' },
+    // F7 Validación: DESACTIVADO en el menú (código intacto). Reactivar quitando el comentario.
+    // { id: 'validacion',       label: 'Validación (F7)',         icon: 'check' },
   ]},
   { group: 'Sistema', items: [
     { id: 'alerts',     label: 'Alertas',           icon: 'bell' },
@@ -52,6 +54,7 @@ const CRUMBS = {
   logistics_req:[['HassPlan'], ['Logística'], ['Requerimientos']],
   transport:    [['HassPlan'], ['Transporte']],
   transport_plan:[['HassPlan'], ['Transporte'], ['Plan']],
+  validacion:   [['HassPlan'], ['Validación · predicho vs real']],
   alerts:       [['HassPlan'], ['Alertas']],
   sources:      [['HassPlan'], ['Fuentes de datos']],
   admin_productores: [['HassPlan'], ['Proveedor'], ['Productores y usuarios']],
@@ -69,6 +72,7 @@ const ROUTE_TO_NAV = {
   labor: 'labor', labor_req: 'labor',
   logistics: 'logistics', logistics_req: 'logistics',
   transport: 'transport', transport_plan: 'transport',
+  validacion: 'validacion',
   alerts: 'alerts',
   sources: 'sources',
   admin_productores: 'admin_productores',
