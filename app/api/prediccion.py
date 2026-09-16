@@ -1,16 +1,18 @@
 """
 Predicción de rendimiento (Módulo 4: Inteligencia Agrícola).
 
-POST /lotes/<id>/prediccion        -> predice, persiste y devuelve tn_ha/total + bandera OOD
-GET  /lotes/<id>/prediccion        -> relee la última predicción del lote
-GET  /campanas/<id>/prediccion     -> total de campaña (Σ tn_total por lote)
+POST /lotes/<id>/prediccion         -> predice, persiste y devuelve tn_ha/total + bandera OOD
+GET  /lotes/<id>/prediccion         -> relee la última predicción del lote
+GET  /campanas/<id>/prediccion      -> total de campaña, ya recalibrado (Σ por lote)
+GET  /campanas/<id>/recalibracion   -> estado del ajuste de nivel por cosecha real
 """
 from flask import Blueprint, jsonify, request, abort
 
 from app.models import Lote, Prediccion
-from app.services.prediccion import predecir_lote, total_campana
+from app.services.prediccion import predecir_lote, total_campana, factor_recalibracion
 from app.api._common import (
-    get_campana, bloquear_si_cerrada, serialize_prediccion, validar_lote_en_campana,
+    get_campana, get_campana_o_404, bloquear_si_cerrada, serialize_prediccion,
+    validar_lote_en_campana,
 )
 
 bp = Blueprint("prediccion", __name__)
@@ -55,3 +57,14 @@ def total(campana_id):
     if campana is None:
         abort(404, description="Campaña no encontrada.")
     return jsonify(total_campana(campana))
+
+
+@bp.get("/campanas/<int:campana_id>/recalibracion")
+def recalibracion(campana_id):
+    """Estado del ajuste de nivel: factor vigente, con cuántos lotes y por qué.
+
+    Lo consume el panel para explicar al productor que el total mostrado ya incorpora
+    la cosecha real de los lotes cerrados, en vez de presentar un número sin origen.
+    """
+    campana = get_campana_o_404(campana_id)
+    return jsonify(factor_recalibracion(campana))

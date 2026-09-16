@@ -6,5 +6,13 @@ una proyeccion local equirectangular alrededor del centroide da area con error
 despreciable. El centroide alimenta la API de clima; el area reemplaza el campo manual.
 """
 from app.services.geo.calculo import centroide, area_ha, resumen
+from app.services.geo.zonas import (
+    PASO_GRADOS, MIN_HA_CUADRANTE, cuadrante_de, nodo, id_cuadrante, poligono_cuadrante,
+    partes_geocerca, area_geocerca_ha, punto_en_geocerca, anillo_simple, se_solapan,
+    muestreo_clima,
+)
 
-__all__ = ["centroide", "area_ha", "resumen"]
+__all__ = ["centroide", "area_ha", "resumen",
+           "PASO_GRADOS", "MIN_HA_CUADRANTE", "cuadrante_de", "nodo", "id_cuadrante",
+           "poligono_cuadrante", "partes_geocerca", "area_geocerca_ha", "punto_en_geocerca",
+           "anillo_simple", "se_solapan", "muestreo_clima"]

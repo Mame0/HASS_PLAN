@@ -1,0 +1,158 @@
+{
+  "generado": "2026-09-16",
+  "geocercas": "datos/zonas/geocercas.geojson",
+  "min_ha_cuadrante": 100,
+  "rejilla": "ERA5-Land 0.1 grados (Open-Meteo models=era5_land)",
+  "zonas": {
+    "la_joya": {
+      "nombre": "La Joya",
+      "provincia": "Arequipa",
+      "distrito_midagri": "La Joya",
+      "unidad_objetivo": "la_joya",
+      "partes": 1,
+      "area_ha": 20629.7,
+      "cuadrantes": [
+        {
+          "id": "-16.6_-72.0",
+          "nodo_lat": -16.6,
+          "nodo_lon": -72.0,
+          "area_ha": 1601.7,
+          "punto_lat": -16.577819,
+          "punto_lon": -71.961979,
+          "punto_metodo": "centroide",
+          "elevacion_m": 1237
+        },
+        {
+          "id": "-16.6_-71.9",
+          "nodo_lat": -16.6,
+          "nodo_lon": -71.9,
+          "area_ha": 2066.7,
+          "punto_lat": -16.573023,
+          "punto_lon": -71.92749,
+          "punto_metodo": "referencia",
+          "elevacion_m": 1276
+        },
+        {
+          "id": "-16.5_-72.0",
+          "nodo_lat": -16.5,
+          "nodo_lon": -72.0,
+          "area_ha": 876.1,
+          "punto_lat": -16.530596,
+          "punto_lon": -71.958532,
+          "punto_metodo": "centroide",
+          "elevacion_m": 1068
+        },
+        {
+          "id": "-16.5_-71.9",
+          "nodo_lat": -16.5,
+          "nodo_lon": -71.9,
+          "area_ha": 10456.6,
+          "punto_lat": -16.499675,
+          "punto_lon": -71.900007,
+          "punto_metodo": "centroide",
+          "elevacion_m": 1438
+        },
+        {
+          "id": "-16.5_-71.8",
+          "nodo_lat": -16.5,
+          "nodo_lon": -71.8,
+          "area_ha": 2298.3,
+          "punto_lat": -16.485473,
+          "punto_lon": -71.830673,
+          "punto_metodo": "referencia",
+          "elevacion_m": 1560
+        },
+        {
+          "id": "-16.4_-71.9",
+          "nodo_lat": -16.4,
+          "nodo_lon": -71.9,
+          "area_ha": 1836.2,
+          "punto_lat": -16.441354,
+          "punto_lon": -71.864319,
+          "punto_metodo": "referencia",
+          "elevacion_m": 1438
+        },
+        {
+          "id": "-16.4_-71.8",
+          "nodo_lat": -16.4,
+          "nodo_lon": -71.8,
+          "area_ha": 1495.5,
+          "punto_lat": -16.443329,
+          "punto_lon": -71.83136,
+          "punto_metodo": "referencia",
+          "elevacion_m": 1566
+        }
+      ]
+    },
+    "majes": {
+      "nombre": "Majes",
+      "provincia": "Caylloma",
+      "distrito_midagri": "Majes",
+      "unidad_objetivo": "majes",
+      "partes": 1,
+      "area_ha": 30195.3,
+      "cuadrantes": [
+        {
+          "id": "-16.4_-72.3",
+          "nodo_lat": -16.4,
+          "nodo_lon": -72.3,
+          "area_ha": 3437.0,
+          "punto_lat": -16.376803,
+          "punto_lon": -72.270813,
+          "punto_metodo": "referencia",
+          "elevacion_m": 1272
+        },
+        {
+          "id": "-16.4_-72.2",
+          "nodo_lat": -16.4,
+          "nodo_lon": -72.2,
+          "area_ha": 9234.5,
+          "punto_lat": -16.38405,
+          "punto_lon": -72.183609,
+          "punto_metodo": "referencia",
+          "elevacion_m": 1357
+        },
+        {
+          "id": "-16.4_-72.1",
+          "nodo_lat": -16.4,
+          "nodo_lon": -72.1,
+          "area_ha": 893.4,
+          "punto_lat": -16.364565,
+          "punto_lon": -72.138301,
+          "punto_metodo": "centroide",
+          "elevacion_m": 1275
+        },
+        {
+          "id": "-16.3_-72.3",
+          "nodo_lat": -16.3,
+          "nodo_lon": -72.3,
+          "area_ha": 5014.9,
+          "punto_lat": -16.333978,
+          "punto_lon": -72.274933,
+          "punto_metodo": "referencia",
+          "elevacion_m": 1297
+        },
+        {
+          "id": "-16.3_-72.2",
+          "nodo_lat": -16.3,
+          "nodo_lon": -72.2,
+          "area_ha": 10065.5,
+          "punto_lat": -16.309596,
+          "punto_lon": -72.205582,
+          "punto_metodo": "referencia",
+          "elevacion_m": 1487
+        },
+        {
+          "id": "-16.3_-72.1",
+          "nodo_lat": -16.3,
+          "nodo_lon": -72.1,
+          "area_ha": 1474.9,
+          "punto_lat": -16.327652,
+          "punto_lon": -72.13695,
+          "punto_metodo": "centroide",
+          "elevacion_m": 1541
+        }
+      ]
+    }
+  }
+}

@@ -24,9 +24,65 @@
 > | **F3 / FRONT** Integrar front + mapa | Track B B6 | ✅ **hecho** (los 10 módulos con datos reales + login/admin) |
 > | **SaaS** Multi-tenant PostgreSQL + RLS | (nuevo) | ✅ **hecho** (`ARQUITECTURA.md` §14, `MIGRACION_POSTGRES.md`) |
 > | **F7** Cierre + recalibración | Track A Fase 7 | 🔲 **siguiente y último** |
+> | **Z** Zonas agroclimáticas (experimental) | propuesta del asesor | 🟢 **Z0 cerrado** (16-sep-2026) — siguiente **Z1** |
 >
 > **Estado al 29-jun-2026:** **51 tests verdes.** Solo queda **F7** (cosecha real de La Joya → recalibrar + doc final).
 > Las secciones "Fase N" y "Track B" de abajo se conservan como **detalle histórico**.
+
+---
+
+## 🧪 Track Z — Zonas agroclimáticas en Arequipa *(experimental, sep-2026)*
+
+**Premisa del asesor:** agrupar los polígonos de lotes en **geocercas por zona** y entrenar con el
+clima histórico de cada zona para predecir mejor que el modelo de Nepeña. Se contrasta como dos hipótesis, con criterios fijados **antes** de ver resultados:
+
+- **H1 (clima):** las zonas difieren más de lo que varía cada una entre años.
+- **H2 (predicción):** un modelo agrupado de Arequipa supera a la media de la zona y a la persistencia
+  (año anterior) en validación dejando un año fuera y en split temporal.
+
+**Variable objetivo:** rendimiento de palto **por distrito MIDAGRI** (no hay cosecha real en la BD).
+**Zonas (decisión 10-sep-2026): una por serie MIDAGRI, con geocerca dibujada a mano** (criterio del asesor):
+- **La Joya** = valle antiguo + irrigaciones (donde están los lotes).
+- **Majes** = El Pedregal + pampa irrigada (la ciudad está dentro de la pampa).
+
+**Procedimiento Z0 → Z1:**
+1. **Dibujo.** El usuario delimita cada zona en `scripts/zonas/geocercas.html`, cubriendo todo el
+   bloque agrícola (una parte por área separada por desierto) → `datos/zonas/geocercas.geojson`.
+2. **Validación.** `scripts/zonas/validar_geocercas.py` revisa:
+   - la estructura y el catálogo de zonas;
+   - que los contornos no se crucen;
+   - que las zonas no se solapen;
+   - que cubran las **referencias de cultivo** (`datos/zonas/referencias_cultivo.geojson`: puntos
+     ubicados por el usuario y revisados sobre satélite).
+3. **Muestreo climático.** El mismo script corta la geocerca con la rejilla de 0.1° de ERA5-Land (una
+   serie de clima por celda). Cada celda cubierta en ≥ 100 ha aporta un punto **dentro de la geocerca**
+   y su altitud → `datos/zonas/muestreo_clima.json` (`--guardar`). El punto se elige, en este orden:
+   **`referencia`** (punto de cultivo verificado por el usuario en esa celda), **`centroide`** del área
+   cubierta, o **`interior`** si ese centroide cae fuera de la geocerca. Importa porque Open-Meteo
+   corrige la temperatura por la altitud del punto pedido (~0.65 °C por cada 100 m).
+4. **Cierre de Z0.** Revisión visual de geocercas y puntos sobre satélite.
+
+> **Limitación declarada (decisión 16-sep-2026).** Las geocercas dibujadas abarcan también pampa sin
+> cultivo, así que el **peso** de cada celda (hectáreas cubiertas) no equivale a superficie cultivada:
+> el promedio climático de la zona está sesgado hacia el terreno que domina la geocerca. Se prefirió
+> conservar el dibujo del asesor y corregir solo la **ubicación** de los puntos con las referencias
+> verificadas. Las celdas sin referencia mantienen el punto calculado, que puede caer en pampa
+> (hoy: `la_joya -16.5_-71.9`, `majes -16.4_-72.1` y `majes -16.3_-72.1`). Hay que decirlo en la tesis
+> al describir el clima zonal, y se corrige añadiendo referencias o ciñendo la geocerca.
+
+**Alcance:** scripts fuera de la app; **sin cambios de BD ni de la app** salvo que H2 se cumpla (Z4).
+
+| Fase | Contenido | Estado |
+|---|---|---|
+| **Z0** Geocercas | `app/services/geo/zonas.py` + `tests/test_geo_zonas.py` + `scripts/zonas/geocercas.html` + `scripts/zonas/validar_geocercas.py` | ✅ **hecho** (16-sep-2026): geocercas dibujadas (La Joya 20 630 ha · Majes 30 195 ha), validadas y `muestreo_clima.json` con 13 cuadrantes |
+| **Z1** Clima + separabilidad (H1) | una serie por celda cubierta, pedida en su punto de `muestreo_clima.json` · Open-Meteo `models=era5_land` fijo · `derivar_features` de producción · clima de zona = promedio ponderado por área cubierta | 🔲 |
+| **Z2** Objetivo MIDAGRI | CSV por distrito (La Joya, Majes) · validación · controles (expansión de superficie, vecería). ⚠️ El compendio público de MIDAGRI trae palta **solo por región**; la serie distrital hay que pedirla (GRA Arequipa / MIDAGRI) | 🔲 |
+| **Z3** Experimento (H2) | líneas base B0/B1 · Ridge/RF · LOYO + temporal + dejando zona fuera | 🔲 |
+| **Z4** Integración | tabla `zona` (catálogo sin RLS) · `lote.zona_id` · modelo por zona con fallback | ⏸ solo si H2 se cumple |
+
+**Gate Z0 — CUMPLIDO (16-sep-2026):** 86 tests verdes ✅ · `validar_geocercas.py` sin errores ni avisos ✅ ·
+geocercas y los 13 puntos de clima revisados sobre satélite ✅ (6 puntos vienen de referencias verificadas;
+3 caen en pampa — ver la limitación declarada arriba).
 
 ---
 

@@ -1,0 +1,28 @@
+{
+  "generado": "2026-09-16",
+  "modelo": "era5_seamless",
+  "endpoint": "https://archive-api.open-meteo.com/v1/archive",
+  "ventana": "1-jul(Y-1) a 30-jun(Y)",
+  "campanas": [
+    2024,
+    2026
+  ],
+  "cuadrantes": [
+    "-16.6_-71.9"
+  ],
+  "filas": 3,
+  "variables": [
+    "hfrio_19",
+    "hfrio_15",
+    "hfrio_14",
+    "hfrio_14_19",
+    "hac_20_25",
+    "hac_25",
+    "t_prom",
+    "t_min",
+    "t_max",
+    "humedad",
+    "lluvia",
+    "eto"
+  ]
+}

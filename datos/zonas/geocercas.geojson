@@ -1,0 +1,113 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "la_joya",
+        "nombre": "La Joya",
+        "descripcion": "valle antiguo + irrigaciones",
+        "provincia": "Arequipa",
+        "distrito_midagri": "La Joya",
+        "unidad_objetivo": "la_joya",
+        "fuente": "dibujo_usuario",
+        "fecha": "2026-09-16"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -71.94603,
+              -16.601978
+            ],
+            [
+              -71.810074,
+              -16.482839
+            ],
+            [
+              -71.818314,
+              -16.411716
+            ],
+            [
+              -71.871185,
+              -16.415009
+            ],
+            [
+              -71.93573,
+              -16.464402
+            ],
+            [
+              -71.970749,
+              -16.536164
+            ],
+            [
+              -71.976929,
+              -16.57763
+            ],
+            [
+              -71.965942,
+              -16.611848
+            ],
+            [
+              -71.94603,
+              -16.601978
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "majes",
+        "nombre": "Majes",
+        "descripcion": "El Pedregal + pampa irrigada Majes-Siguas",
+        "provincia": "Caylloma",
+        "distrito_midagri": "Majes",
+        "unidad_objetivo": "majes",
+        "fuente": "dibujo_usuario",
+        "fecha": "2026-09-16"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -72.291412,
+              -16.291801
+            ],
+            [
+              -72.212448,
+              -16.244342
+            ],
+            [
+              -72.121124,
+              -16.318163
+            ],
+            [
+              -72.121811,
+              -16.362968
+            ],
+            [
+              -72.214508,
+              -16.453866
+            ],
+            [
+              -72.288666,
+              -16.393931
+            ],
+            [
+              -72.328491,
+              -16.330683
+            ],
+            [
+              -72.291412,
+              -16.291801
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

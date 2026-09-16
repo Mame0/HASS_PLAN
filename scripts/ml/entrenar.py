@@ -160,6 +160,39 @@ best = grid.best_params_
 print(f"\nMejores hiperparametros (GroupKFold): {best}")
 m_tuned = evaluar(RandomForestRegressor(n_estimators=300, random_state=42, **best), "tuneado")
 
+# --- Calibracion conformal (split conformal, respetando los grupos) ------------
+# Se reserva la ULTIMA campana como conjunto de calibracion: el modelo no la ve, y
+# sus residuos absolutos dan el margen +/-q que garantiza la cobertura pedida.
+# Reservar una CAMPANA (y no filas al azar) es lo correcto aqui: la unidad sobre la
+# que el modelo tiene que generalizar en produccion es la campana nueva.
+ALPHA = 0.20                                  # 1-ALPHA = 80% de cobertura objetivo
+
+
+def calibrar_conformal(params, alpha=ALPHA):
+    camp_cal = sorted(set(grupos))[-1]
+    tr = grupos != camp_cal
+    m = RandomForestRegressor(n_estimators=300, random_state=42, **params).fit(X[tr], y[tr])
+    residuos = np.abs(y[~tr] - m.predict(X[~tr]))
+    n = len(residuos)
+    if n < 5:
+        return None
+    # Correccion de muestra finita: el cuantil se toma en ceil((n+1)(1-alpha))/n,
+    # que es lo que da la garantia de cobertura del conformal split.
+    nivel = min(1.0, np.ceil((n + 1) * (1 - alpha)) / n)
+    q = float(np.quantile(residuos, nivel))
+    cobertura = float((residuos <= q).mean())
+    print(f"\n--- Calibracion conformal (campana reservada: {camp_cal}) ---")
+    print(f"  n calibracion ....... {n}")
+    print(f"  margen q ............ +/-{q:.2f} Tn/Ha")
+    print(f"  cobertura objetivo .. {1-alpha:.0%}")
+    print(f"  cobertura en calib .. {cobertura:.0%}")
+    return {"q": round(q, 3), "cobertura": round(1 - alpha, 2), "n": int(n),
+            "origen": f"entrenamiento (campana reservada {camp_cal})",
+            "cobertura_observada": round(cobertura, 3)}
+
+
+conformal = calibrar_conformal(best)
+
 # Importancias del modelo tuneado
 modelo_final = RandomForestRegressor(n_estimators=300, random_state=42, **best).fit(X, y)
 imp = pd.Series(modelo_final.feature_importances_, index=FEATURES).sort_values(ascending=False)
@@ -176,13 +209,16 @@ meta = {
     "rangos_entrenamiento": {f: [float(X[f].min()), float(X[f].max())] for f in FEATURES},
     "metricas": m_tuned,
     "metricas_baseline": m_base,
+    "conformal": conformal,
     "hiperparametros": {"n_estimators": 300, **best},
     "pipeline": {"fuente_clima": "open_meteo", "sitio_entrenamiento": "Nepena (Fundo Los Paltos)",
                  "lat": LAT, "lon": LON, "ventana": "jul-jun por campana",
                  "n_filas": int(X.shape[0])},
     "nota": "Clima derivado por API (no columnas originales). Modelo regularizado (max_features<1 + "
             "min_samples_leaf) para evitar que las climaticas colineales dominen, SIN quitarlas. "
-            "Tuneado contra GroupKFold. Usar rangos_entrenamiento para marcar OOD (ej. La Joya).",
+            "Tuneado contra GroupKFold. Usar rangos_entrenamiento para marcar OOD (ej. La Joya). "
+            "El bloque 'conformal' da el margen +/-q del intervalo de prediccion; se estima con una "
+            "campana reservada. Recalibrar contra la cosecha real de La Joya con scripts/ml/calibrar.py.",
 }
 with open(OUT_META, "w", encoding="utf-8") as f:
     json.dump(meta, f, ensure_ascii=False, indent=2)

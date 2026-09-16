@@ -1,0 +1,445 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "-16.3_-72.2",
+        "zona": "majes",
+        "nombre_zona": "Majes",
+        "provincia": "Caylloma",
+        "distrito_midagri": "Majes",
+        "unidad_objetivo": "majes",
+        "nodo_lat": -16.3,
+        "nodo_lon": -72.2,
+        "punto_lat": -16.309596,
+        "punto_lon": -72.205582,
+        "punto_origen": "usuario",
+        "punto_elevacion_m": null,
+        "lotes": [],
+        "fecha": "2026-09-10",
+        "sobre_cultivo": true,
+        "revision": "visual sobre satelite Esri, 2026-09-10"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -72.25,
+              -16.35
+            ],
+            [
+              -72.15,
+              -16.35
+            ],
+            [
+              -72.15,
+              -16.25
+            ],
+            [
+              -72.25,
+              -16.25
+            ],
+            [
+              -72.25,
+              -16.35
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "-16.3_-72.3",
+        "zona": "majes",
+        "nombre_zona": "Majes",
+        "provincia": "Caylloma",
+        "distrito_midagri": "Majes",
+        "unidad_objetivo": "majes",
+        "nodo_lat": -16.3,
+        "nodo_lon": -72.3,
+        "punto_lat": -16.333978,
+        "punto_lon": -72.274933,
+        "punto_origen": "usuario",
+        "punto_elevacion_m": null,
+        "lotes": [],
+        "fecha": "2026-09-10",
+        "sobre_cultivo": true,
+        "revision": "visual sobre satelite Esri, 2026-09-10"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -72.35,
+              -16.35
+            ],
+            [
+              -72.25,
+              -16.35
+            ],
+            [
+              -72.25,
+              -16.25
+            ],
+            [
+              -72.35,
+              -16.25
+            ],
+            [
+              -72.35,
+              -16.35
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "-16.4_-71.8",
+        "zona": "la_joya",
+        "nombre_zona": "La Joya",
+        "provincia": "Arequipa",
+        "distrito_midagri": "La Joya",
+        "unidad_objetivo": "la_joya",
+        "nodo_lat": -16.4,
+        "nodo_lon": -71.8,
+        "punto_lat": -16.443329,
+        "punto_lon": -71.83136,
+        "punto_origen": "usuario",
+        "punto_elevacion_m": null,
+        "lotes": [],
+        "fecha": "2026-09-10",
+        "sobre_cultivo": true,
+        "revision": "visual sobre satelite Esri, 2026-09-10"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -71.85,
+              -16.45
+            ],
+            [
+              -71.75,
+              -16.45
+            ],
+            [
+              -71.75,
+              -16.35
+            ],
+            [
+              -71.85,
+              -16.35
+            ],
+            [
+              -71.85,
+              -16.45
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "-16.4_-71.9",
+        "zona": "la_joya",
+        "nombre_zona": "La Joya",
+        "provincia": "Arequipa",
+        "distrito_midagri": "La Joya",
+        "unidad_objetivo": "la_joya",
+        "nodo_lat": -16.4,
+        "nodo_lon": -71.9,
+        "punto_lat": -16.441354,
+        "punto_lon": -71.864319,
+        "punto_origen": "usuario",
+        "punto_elevacion_m": null,
+        "lotes": [
+          5
+        ],
+        "fecha": "2026-09-10",
+        "sobre_cultivo": true,
+        "revision": "visual sobre satelite Esri, 2026-09-10"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -71.95,
+              -16.45
+            ],
+            [
+              -71.85,
+              -16.45
+            ],
+            [
+              -71.85,
+              -16.35
+            ],
+            [
+              -71.95,
+              -16.35
+            ],
+            [
+              -71.95,
+              -16.45
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "-16.4_-72.2",
+        "zona": "majes",
+        "nombre_zona": "Majes",
+        "provincia": "Caylloma",
+        "distrito_midagri": "Majes",
+        "unidad_objetivo": "majes",
+        "nodo_lat": -16.4,
+        "nodo_lon": -72.2,
+        "punto_lat": -16.38405,
+        "punto_lon": -72.183609,
+        "punto_origen": "usuario",
+        "punto_elevacion_m": null,
+        "lotes": [],
+        "fecha": "2026-09-10",
+        "sobre_cultivo": true,
+        "revision": "visual sobre satelite Esri, 2026-09-10"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -72.25,
+              -16.45
+            ],
+            [
+              -72.15,
+              -16.45
+            ],
+            [
+              -72.15,
+              -16.35
+            ],
+            [
+              -72.25,
+              -16.35
+            ],
+            [
+              -72.25,
+              -16.45
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "-16.4_-72.3",
+        "zona": "majes",
+        "nombre_zona": "Majes",
+        "provincia": "Caylloma",
+        "distrito_midagri": "Majes",
+        "unidad_objetivo": "majes",
+        "nodo_lat": -16.4,
+        "nodo_lon": -72.3,
+        "punto_lat": -16.376803,
+        "punto_lon": -72.270813,
+        "punto_origen": "usuario",
+        "punto_elevacion_m": null,
+        "lotes": [],
+        "fecha": "2026-09-10",
+        "sobre_cultivo": true,
+        "revision": "visual sobre satelite Esri, 2026-09-10"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -72.35,
+              -16.45
+            ],
+            [
+              -72.25,
+              -16.45
+            ],
+            [
+              -72.25,
+              -16.35
+            ],
+            [
+              -72.35,
+              -16.35
+            ],
+            [
+              -72.35,
+              -16.45
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "-16.5_-71.8",
+        "zona": "la_joya",
+        "nombre_zona": "La Joya",
+        "provincia": "Arequipa",
+        "distrito_midagri": "La Joya",
+        "unidad_objetivo": "la_joya",
+        "nodo_lat": -16.5,
+        "nodo_lon": -71.8,
+        "punto_lat": -16.485473,
+        "punto_lon": -71.830673,
+        "punto_origen": "usuario",
+        "punto_elevacion_m": null,
+        "lotes": [],
+        "fecha": "2026-09-10",
+        "sobre_cultivo": true,
+        "revision": "visual sobre satelite Esri, 2026-09-10"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -71.85,
+              -16.55
+            ],
+            [
+              -71.75,
+              -16.55
+            ],
+            [
+              -71.75,
+              -16.45
+            ],
+            [
+              -71.85,
+              -16.45
+            ],
+            [
+              -71.85,
+              -16.55
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "-16.5_-71.9",
+        "zona": "la_joya",
+        "nombre_zona": "La Joya",
+        "provincia": "Arequipa",
+        "distrito_midagri": "La Joya",
+        "unidad_objetivo": "la_joya",
+        "nodo_lat": -16.5,
+        "nodo_lon": -71.9,
+        "punto_lat": -16.501933,
+        "punto_lon": -71.897278,
+        "punto_origen": "usuario",
+        "punto_elevacion_m": null,
+        "lotes": [],
+        "fecha": "2026-09-10",
+        "sobre_cultivo": false,
+        "revision": "visual sobre satelite Esri, 2026-09-10"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -71.95,
+              -16.55
+            ],
+            [
+              -71.85,
+              -16.55
+            ],
+            [
+              -71.85,
+              -16.45
+            ],
+            [
+              -71.95,
+              -16.45
+            ],
+            [
+              -71.95,
+              -16.55
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "-16.6_-71.9",
+        "zona": "la_joya",
+        "nombre_zona": "La Joya",
+        "provincia": "Arequipa",
+        "distrito_midagri": "La Joya",
+        "unidad_objetivo": "la_joya",
+        "nodo_lat": -16.6,
+        "nodo_lon": -71.9,
+        "punto_lat": -16.573023,
+        "punto_lon": -71.92749,
+        "punto_origen": "usuario",
+        "punto_elevacion_m": null,
+        "lotes": [
+          6,
+          7,
+          10,
+          15
+        ],
+        "fecha": "2026-09-10",
+        "sobre_cultivo": true,
+        "revision": "visual sobre satelite Esri, 2026-09-10"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -71.95,
+              -16.65
+            ],
+            [
+              -71.85,
+              -16.65
+            ],
+            [
+              -71.85,
+              -16.55
+            ],
+            [
+              -71.95,
+              -16.55
+            ],
+            [
+              -71.95,
+              -16.65
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "descripcion": "Puntos de cultivo ubicados a mano por el usuario (antes scripts/zonas/cuadrantes.geojson). Referencia para verificar que las geocercas cubren el cultivo."
+}

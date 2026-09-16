@@ -347,6 +347,19 @@ def serialize_prediccion(pred: Prediccion, resultado=None):
              "unit": VAR_META.get(o["variable"], {}).get("unit", "")}
             for o in resultado["out_of_distribution"]
         ]
+        # Procedencia del intervalo: `calibrado` False = viene de la dispersión entre
+        # árboles y NO cubre el porcentaje que sugiere. La UI debe decirlo.
+        iv = resultado.get("intervalo") or {}
+        if out["intervalo"] is not None:
+            out["intervalo"].update({
+                "calibrado": iv.get("calibrado", False),
+                "cobertura": iv.get("cobertura"),
+                "origen": iv.get("origen"),
+            })
+        out["dispersion_arboles"] = (
+            round(resultado["dispersion_arboles"], 1)
+            if resultado.get("dispersion_arboles") is not None else None
+        )
     return out
 
 

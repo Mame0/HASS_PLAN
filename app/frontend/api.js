@@ -156,7 +156,10 @@
         avgYield: avgY, maxYield: maxY, minYield: minY, history: history,
         // confianza real del modelo (%) y estado de datos para el módulo de predicción.
         confianza: pred && pred.confianza != null ? pred.confianza / 100 : null,
-        // intervalo plausible p10–p90 del bosque (Tn/Ha) — incertidumbre real de la predicción.
+        // Intervalo de predicción (Tn/Ha). Lleva `calibrado`: true solo si sale de la
+        // calibración conformal (margen medido sobre datos no vistos). Si es false, el
+        // rango viene de la dispersión entre árboles y NO cubre el % que sugiere: la UI
+        // debe marcarlo como sin calibrar en vez de presentarlo como un p10–p90 fiable.
         intervalo: pred && pred.intervalo ? pred.intervalo : null,
         tienePrediccion: !!pred, pendientes: pendientes,
         status: pendientes > 0 ? 'warn' : 'ok', syncOk: true,

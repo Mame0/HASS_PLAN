@@ -30,14 +30,21 @@ pip install -r requirements.txt        # Flask 3, Flask-SQLAlchemy, scikit-learn
 DATABASE_URL=postgresql://app_palta:CLAVE@localhost:5432/palta python run.py   # → http://127.0.0.1:5000
                                        # el esquema PostgreSQL lo crean los scripts sql/ (no create_all)
 
-python -m pytest                       # toda la suite (51 tests; usan SQLite temporal por test, no tocan PostgreSQL)
+python -m pytest                       # toda la suite (86 tests; usan SQLite temporal por test, no tocan PostgreSQL)
 python -m pytest tests/test_aislamiento.py   # tests de aislamiento multi-tenant (RLS)
 python -m pytest -q                    # resumen breve
 
 python scripts/ml/entrenar.py          # reentrena el RF → app/ml/modelo.pkl + modelo_meta.json
+python scripts/ml/calibrar.py          # recalibra el intervalo conformal con la cosecha REAL (F7)
+python scripts/ml/calibrar.py --dry-run  # lo calcula y lo muestra sin escribir el metadato
 python scripts/analisis/validar_flujo.py   # valida F1→F5 de punta a punta con números reales
 python scripts/migracion/migrar_datos.py   # migra SQLite (instance/palta.db) → PostgreSQL
 python scripts/migracion/verificar_rls.py  # comprueba el aislamiento entre tenants
+
+# Track Z (experimental): geocercas por zona agroclimática en Arequipa — ver docs/ROADMAP.md
+python -m pytest tests/test_geo_zonas.py   # geocercas (partes, cruces, solape) y muestreo climático por celdas ERA5-Land
+python scripts/zonas/validar_geocercas.py --guardar   # valida datos/zonas/geocercas.geojson → datos/zonas/muestreo_clima.json
+# scripts/zonas/geocercas.html  → abrir en el navegador, dibujar la geocerca de cada zona, guardar en datos/zonas/geocercas.geojson
 ```
 
 No hay linter/formatter configurado. La API REST vive bajo `/api` (ver `app/api/__init__.py`).
@@ -91,8 +98,31 @@ ruta responde **502** (intencional). Para *predecir* una campaña futura, el cli
 (o, a futuro, por climatología/año típico). El 502 con datos pasados sí indica un fallo real de API.
 
 **Predicción (`services/prediccion.py` + `ml/predictor.py`):** carga `modelo.pkl` +
-`modelo_meta.json`. Devuelve `tn_ha`, `tn_total` (= tn_ha × area_ha), confianza (dispersión entre
-árboles del RF) y **bandera OOD** (variables fuera del rango de entrenamiento).
+`modelo_meta.json`. Devuelve `tn_ha`, `tn_total` (= tn_ha × area_ha), un **intervalo de
+predicción**, `dispersion_arboles` y la **bandera OOD** (variables fuera del rango de entrenamiento).
+
+**Incertidumbre: intervalo conformal, no dispersión entre árboles.** El p10–p90 entre árboles
+cubría el **41 %** del valor real cuando prometía el 80 %: los percentiles del bosque miden la
+dispersión del *estimador de la media*, no la del rendimiento, y omiten la varianza residual.
+Se sustituye por **predicción conformal**: un margen ±q estimado con residuos sobre datos no
+vistos, guardado en `modelo_meta.json → conformal`. `entrenar.py` lo estima reservando una
+campaña; `scripts/ml/calibrar.py` lo **recalibra con la cosecha real de La Joya** (que es el
+margen honesto para el sitio de despliegue) sin reentrenar ni llamar a ninguna API. El
+`Predictor` recarga el metadato si cambia en disco → no hace falta reiniciar tras calibrar.
+⚠️ Todo intervalo lleva `calibrado`: si es `false` viene del bosque y **no** cubre lo que sugiere;
+la UI lo marca con `~`. Nunca presentar un intervalo sin calibrar como si tuviera cobertura.
+
+**Recalibración progresiva (nivel de campaña).** El modelo acierta el **orden** de los lotes
+(correlación ~0.37) pero no su **nivel**: la mitad de la varianza del rendimiento es el efecto
+del año (11.9 → 32.0 Tn/Ha entre campañas del dataset) y ninguna feature lo captura. Como la
+cosecha dura 16–20 semanas y avanza lote a lote, en cuanto hay ≥3 lotes cosechados se corrige
+el resto con `factor = Σ real / Σ predicho` (recorte de seguridad 0.5–2.0). En validación
+dejando una campaña fuera baja el MAPE del 51 % al 36 % y sube el R² de +0.15 a +0.40.
+`total_campana()` devuelve el total ya corregido —usa el valor **real** donde lo hay,
+**recalibrado** en los pendientes— así que el plan F4 y la cascada F5 se apoyan siempre en el
+mejor estimado disponible, no en el del día 1. Endpoint: `GET /campanas/<id>/recalibracion`.
+⚠️ Solo cuenta `ResultadoCosecha.tn_ha_real > 0`: la ruta de variables crea la fila con 0 al
+guardar el muestreo pre-cosecha, y ese cero envenenaría el factor.
 
 ## Reglas del dominio que NO se deben romper
 
@@ -160,7 +190,11 @@ integridad referencial en cascada, casos borde, pytest verde); un commit por fas
   **SaaS** (PostgreSQL multi-tenant con RLS — ver `docs/MIGRACION_POSTGRES.md` y `ARQUITECTURA.md` §14).
 - **Siguiente y último:** **F7** — cargar la **cosecha real de La Joya** (`ResultadoCosecha`), comparar
   predicho vs real (`error_vs()`), evaluar reentrenamiento y redactar la documentación final de la tesis.
-- **51 tests verdes** (incl. `test_aislamiento.py` para el aislamiento multi-tenant).
+  Cada resultado cargado alimenta además dos mecanismos ya implementados: la **recalibración
+  progresiva** del nivel de campaña y, vía `scripts/ml/calibrar.py`, el **margen conformal** del
+  intervalo. F7 deja de ser solo validación: es lo que hace honesto al modelo en su sitio real.
+- **68 tests verdes** (incl. `test_aislamiento.py` para el aislamiento multi-tenant y
+  `test_recalibracion.py` para el nivel de campaña y la calibración del intervalo).
 
 ## Particularidades del entorno
 

@@ -2,6 +2,24 @@
 const HP_B = window.HP;
 
 /* ===================== M4 — Intelligence ===================== */
+// Intervalo de predicción. Si `calibrado` es false el rango viene de la dispersión
+// entre árboles y NO cubre el porcentaje que sugiere un "p10–p90": se marca con ~ y
+// se explica en el title, para no presentar como fiable lo que no está calibrado.
+function Intervalo({ iv, size = 12 }) {
+  if (!iv) return <span style={{ color: 'var(--muted)' }}>—</span>;
+  const cal = iv.calibrado;
+  const pct = iv.cobertura ? Math.round(iv.cobertura * 100) + '%' : null;
+  return (
+    <span className="mono" style={{ fontSize: size, color: cal ? 'var(--ink-3)' : 'var(--muted)' }}
+          title={cal
+            ? `Intervalo calibrado (${pct} de cobertura) · origen: ${iv.origen}`
+            : 'Sin calibrar: rango entre árboles del bosque, cobertura real desconocida. ' +
+              'Ejecuta scripts/ml/calibrar.py con la cosecha real.'}>
+      {cal ? '' : '~'}{HP_B.fmtNum(iv.p10, 1)}–{HP_B.fmtNum(iv.p90, 1)}
+    </span>
+  );
+}
+
 function Intelligence() {
   const { navigate, toast } = useRouter();
   const ro = esCampanaCerrada();
@@ -56,7 +74,7 @@ function Intelligence() {
           <Donut pct={confMedia || 0} label="confianza" />
           <div>
             <div className="page-eyebrow" style={{ marginBottom: 6 }}>Confianza media del modelo</div>
-            <div style={{ fontSize: 12, color: 'var(--ink-3)' }}>Dispersión entre árboles del Random Forest</div>
+            <div style={{ fontSize: 12, color: 'var(--ink-3)' }}>Precisión del intervalo calibrado · no es probabilidad de acierto</div>
           </div>
         </div>
         <InfoCard icon="harvest" label="Producción estimada total" big={`${HP_B.fmtNum(HP_B.estimadoTn || 0, 0)} Tn`} small="Σ de Tn/Ha × Área por sector predicho" />
@@ -76,7 +94,7 @@ function Intelligence() {
             <th>Sector</th><th className="num">Área</th>
             <th>Variables</th>
             <th className="num">Rend. estimado</th>
-            <th className="num">Rango p10–p90</th>
+            <th className="num">Intervalo</th>
             <th>Confianza</th>
           </tr></thead>
           <tbody>
@@ -91,7 +109,7 @@ function Intelligence() {
                   <td className="num">{HP_B.fmtNum(s.area, 1)} Ha</td>
                   <td>{incompletas ? <Badge tone="warn">{s.pendientes} pendiente(s)</Badge> : <Badge tone="olive">Completas</Badge>}</td>
                   <td className="num strong">{s.expectedYieldHa != null ? HP_B.fmtNum(s.expectedYieldHa, 1) + ' Tn/Ha' : '—'}</td>
-                  <td className="num">{s.intervalo ? <span className="mono" style={{ fontSize: 11, color: 'var(--ink-3)' }}>{HP_B.fmtNum(s.intervalo.p10, 1)}–{HP_B.fmtNum(s.intervalo.p90, 1)}</span> : <span style={{ color: 'var(--muted)' }}>—</span>}</td>
+                  <td className="num"><Intervalo iv={s.intervalo} size={11} /></td>
                   <td>
                     {conf != null ? (
                       <div className="hstack" style={{ gap: 8 }}>
@@ -126,7 +144,7 @@ function IntelligenceResult() {
       <PageHeader
         eyebrow="M4 · Resultados de predicción"
         title={`Producción estimada · ${campNombre}`}
-        sub="Predicción a nivel de sector. La confianza mide la dispersión entre los árboles del Random Forest; el clima de La Joya marca extrapolación (OOD)."
+        sub="Predicción a nivel de sector. El intervalo calibrado es la incertidumbre real del modelo; el clima de La Joya marca extrapolación (OOD). La confianza resume qué tan estrecho es ese intervalo — no es una probabilidad de acierto."
         actions={
           <>
             <button className="btn ghost" onClick={() => navigate('intelligence')}>Volver</button>
@@ -144,7 +162,7 @@ function IntelligenceResult() {
           <Donut pct={confMedia || 0} label="confianza" />
           <div>
             <div className="page-eyebrow" style={{ marginBottom: 6 }}>Confianza media</div>
-            <div style={{ fontSize: 12, color: 'var(--ink-3)' }}>Dispersión entre árboles del Random Forest</div>
+            <div style={{ fontSize: 12, color: 'var(--ink-3)' }}>Precisión del intervalo calibrado · no es probabilidad de acierto</div>
           </div>
         </div>
       </div>
@@ -160,7 +178,7 @@ function IntelligenceResult() {
             <thead><tr>
               <th>Sector</th><th className="num">Área</th>
               <th className="num">Tn/Ha predicha</th>
-              <th className="num">Rango p10–p90</th>
+              <th className="num">Intervalo</th>
               <th className="num">Tn totales</th>
               <th>Confianza</th>
             </tr></thead>
@@ -170,7 +188,7 @@ function IntelligenceResult() {
                   <td><span className="mono" style={{ color: 'var(--ink-3)' }}>L{s.id}</span> · <span className="strong">{s.name}</span></td>
                   <td className="num">{HP_B.fmtNum(s.area, 1)} Ha</td>
                   <td className="num strong">{HP_B.fmtNum(s.expectedYieldHa, 1)}</td>
-                  <td className="num">{s.intervalo ? <span className="mono" style={{ fontSize: 12, color: 'var(--ink-3)' }}>{HP_B.fmtNum(s.intervalo.p10, 1)}–{HP_B.fmtNum(s.intervalo.p90, 1)}</span> : <span style={{ color: 'var(--muted)' }}>—</span>}</td>
+                  <td className="num"><Intervalo iv={s.intervalo} size={12} /></td>
                   <td className="num strong">{HP_B.fmtNum(s.expectedYieldHa * s.area, 1)} Tn</td>
                   <td>{s.confianza != null ? <span className="mono" style={{ fontSize: 12, color: 'var(--ink-3)' }}>{Math.round(s.confianza*100)}%</span> : <span style={{ color:'var(--muted)' }}>—</span>}</td>
                 </tr>

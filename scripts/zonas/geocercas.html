@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Geocercas de zonas — Track Z</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Mismo stack de mapa que el front (HassPlan.html): Leaflet + Geoman + satélite Esri -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/@geoman-io/leaflet-geoman-free@2.17.0/dist/leaflet-geoman.css" />
+<style>
+  body { margin: 0; font: 14px system-ui, sans-serif; display: grid; grid-template-columns: 350px 1fr; height: 100vh; }
+  aside { padding: 14px; overflow: auto; background: #f7f4ee; border-right: 1px solid #ddd; }
+  #mapa { height: 100vh; }
+  h1 { font-size: 16px; margin: 0 0 8px; }
+  p.ayuda { color: #555; font-size: 12.5px; line-height: 1.45; }
+  .zona { display: flex; align-items: center; gap: 8px; padding: 8px; border: 2px solid transparent; border-radius: 6px; cursor: pointer; margin-bottom: 6px; background: #fff; }
+  .zona.activa { border-color: #333; }
+  .zona .color { width: 14px; height: 14px; border-radius: 3px; flex: none; }
+  .zona .estado { margin-left: auto; font-size: 12px; color: #777; text-align: right; }
+  .aviso { color: #c0392b; }
+  button { padding: 6px 10px; margin: 4px 4px 4px 0; cursor: pointer; }
+  input[type=text] { width: 100%; box-sizing: border-box; padding: 6px; }
+  textarea { width: 100%; box-sizing: border-box; height: 150px; font: 11px monospace; }
+</style>
+</head>
+<body>
+<aside>
+  <h1>Geocercas de zonas agroclimáticas</h1>
+  <p class="ayuda">Delimitación a mano sobre el satélite.<br>
+  1) Elige una zona. 2) Dibuja su contorno cubriendo <b>todo el bloque agrícola</b>, sin desierto ni cerros.
+  Si la zona tiene áreas separadas por desierto, dibuja <b>una parte por área</b>: se guardan juntas.
+  3) Comprueba que los <b>puntos verdes</b> (tus referencias de cultivo) queden dentro de su zona; los grises
+  no están sobre cultivo y no cuentan. 4) Descarga, guarda como <code>datos/zonas/geocercas.geojson</code> y corre
+  <code>python scripts/zonas/validar_geocercas.py</code>.<br>
+  En amarillo: lotes de la BD. Para corregir: pega el archivo en el cuadro, "Importar" y edita los vértices.</p>
+
+  <div id="zonas"></div>
+  <button id="btnBorrar">Borrar partes de la zona elegida</button>
+
+  <label>Buscar lugar</label>
+  <input id="buscar" type="text" placeholder="El Pedregal, Majes, Arequipa">
+  <button id="btnBuscar">Buscar</button>
+
+  <div>
+    <button id="btnExportar">Exportar GeoJSON</button>
+    <button id="btnDescargar">Descargar archivo</button>
+    <button id="btnImportar">Importar del cuadro</button>
+  </div>
+  <textarea id="salida" placeholder="Aquí aparece el GeoJSON (o pega uno para editarlo)"></textarea>
+</aside>
+<div id="mapa"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@2.17.0/dist/leaflet-geoman.min.js"></script>
+<script>
+// Una zona = una serie de rendimiento distrital MIDAGRI. Debe coincidir con CATALOGO en validar_geocercas.py.
+const ZONAS = [
+  { id: 'la_joya', nombre: 'La Joya', descripcion: 'valle antiguo + irrigaciones',
+    provincia: 'Arequipa', distrito_midagri: 'La Joya', unidad_objetivo: 'la_joya', color: '#e0662f' },
+  { id: 'majes', nombre: 'Majes', descripcion: 'El Pedregal + pampa irrigada Majes-Siguas',
+    provincia: 'Caylloma', distrito_midagri: 'Majes', unidad_objetivo: 'majes', color: '#8e44ad' },
+];
+const PARTE_MIN_HA = 300;   // = PARTE_MIN_HA de validar_geocercas.py
+
+// Lotes dibujados a mano en la BD (referencia visual).
+const LOTES = [
+  { id: 5, nombre: 'Lote prueba', c: [[-71.85138,-16.448388],[-71.851101,-16.448526],[-71.850876,-16.448141],[-71.851058,-16.447997]] },
+  { id: 6, nombre: 'lote añadido 1', c: [[-71.926192,-16.595359],[-71.926106,-16.595829],[-71.922856,-16.594019],[-71.923039,-16.593536]] },
+  { id: 7, nombre: 'lote 24 - 25', c: [[-71.93189,-16.594153],[-71.931418,-16.594547],[-71.931117,-16.594369],[-71.931664,-16.593947]] },
+  { id: 10, nombre: 'Lote b futura', c: [[-71.927103,-16.588749],[-71.923885,-16.585859],[-71.923757,-16.586583],[-71.927081,-16.589359]] },
+  { id: 15, nombre: 'LOTE 4', c: [[-71.921376,-16.584934],[-71.923627,-16.586888],[-71.923542,-16.587628],[-71.921204,-16.585634]] },
+];
+
+// Puntos de cultivo ubicados por el usuario y revisados sobre satélite (datos/zonas/referencias_cultivo.geojson).
+const REFERENCIAS = [
+  { id: '-16.3_-72.2', zona: 'majes', lat: -16.3096, lon: -72.20558, sobreCultivo: true },
+  { id: '-16.3_-72.3', zona: 'majes', lat: -16.33398, lon: -72.27493, sobreCultivo: true },
+  { id: '-16.4_-72.2', zona: 'majes', lat: -16.38405, lon: -72.18361, sobreCultivo: true },
+  { id: '-16.4_-72.3', zona: 'majes', lat: -16.3768, lon: -72.27081, sobreCultivo: true },
+  { id: '-16.4_-71.8', zona: 'la_joya', lat: -16.44333, lon: -71.83136, sobreCultivo: true },
+  { id: '-16.4_-71.9', zona: 'la_joya', lat: -16.44135, lon: -71.86432, sobreCultivo: true },
+  { id: '-16.5_-71.8', zona: 'la_joya', lat: -16.48547, lon: -71.83067, sobreCultivo: true },
+  { id: '-16.5_-71.9', zona: 'la_joya', lat: -16.50193, lon: -71.89728, sobreCultivo: false },
+  { id: '-16.6_-71.9', zona: 'la_joya', lat: -16.57302, lon: -71.92749, sobreCultivo: true },
+];
+
+const mapa = L.map('mapa');
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+  { maxZoom: 19, attribution: 'Esri World Imagery' }).addTo(mapa);
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',
+  { maxZoom: 19 }).addTo(mapa);
+mapa.fitBounds(REFERENCIAS.map(r => [r.lat, r.lon]), { padding: [60, 60] });
+mapa.createPane('referencias').style.zIndex = 650;   // encima de las geocercas dibujadas
+
+LOTES.forEach(l => L.polygon(l.c.map(([lon, lat]) => [lat, lon]), { color: '#ffd400', weight: 2, pmIgnore: true })
+  .bindTooltip('Lote ' + l.id + ': ' + l.nombre).addTo(mapa));
+REFERENCIAS.forEach(r => L.circleMarker([r.lat, r.lon], {
+    radius: 6, color: '#fff', weight: 2, fillColor: r.sobreCultivo ? '#1faa3a' : '#888', fillOpacity: 1,
+    pmIgnore: true, pane: 'referencias' })
+  .bindTooltip('Referencia ' + r.id + ' (' + r.zona + ')' + (r.sobreCultivo ? '' : ' — no está sobre cultivo'))
+  .addTo(mapa));
+
+let activa = ZONAS[0].id;
+const capas = Object.fromEntries(ZONAS.map(z => [z.id, []]));   // id zona -> [L.Polygon] (partes)
+
+// --- geometría (guía visual; lo autoritativo es validar_geocercas.py) ---
+function anilloDe(capa) { return capa.toGeoJSON().geometry.coordinates[0].slice(0, -1); }
+
+function areaHa(anillo) {   // misma proyección equirectangular que app/services/geo/calculo.py
+  const k = Math.cos(anillo.reduce((s, p) => s + p[1], 0) / anillo.length * Math.PI / 180);
+  let a = 0;
+  anillo.forEach((p, i) => {
+    const q = anillo[(i + 1) % anillo.length];
+    a += (p[0] * k * 111320) * (q[1] * 110574) - (q[0] * k * 111320) * (p[1] * 110574);
+  });
+  return Math.abs(a) / 2 / 10000;
+}
+
+function dentro(lat, lon, anillo) {
+  let d = false;
+  anillo.forEach((a, i) => {
+    const b = anillo[(i + 1) % anillo.length];
+    if ((a[1] > lat) !== (b[1] > lat) && lon < a[0] + (lat - a[1]) * (b[0] - a[0]) / (b[1] - a[1])) d = !d;
+  });
+  return d;
+}
+
+function estado(id) {
+  const partes = capas[id];
+  if (!partes.length) return 'pendiente';
+  const anillos = partes.map(anilloDe);
+  const ha = anillos.reduce((s, a) => s + areaHa(a), 0);
+  const refs = REFERENCIAS.filter(r => r.zona === id && r.sobreCultivo);
+  const cubiertas = refs.filter(r => anillos.some(a => dentro(r.lat, r.lon, a))).length;
+  const avisos = [];
+  const chicas = anillos.filter(a => areaHa(a) < PARTE_MIN_HA).length;
+  if (chicas) avisos.push(chicas + ' parte(s) < ' + PARTE_MIN_HA + ' ha');
+  if (cubiertas < refs.length) avisos.push((refs.length - cubiertas) + ' referencia(s) fuera');
+  const texto = Math.round(ha).toLocaleString('es-PE') + ' ha · ' + partes.length +
+    (partes.length === 1 ? ' parte' : ' partes') + '<br>referencias ' + cubiertas + '/' + refs.length;
+  return avisos.length ? texto + '<br><b class="aviso">' + avisos.join('<br>') + '</b>' : '✔ ' + texto;
+}
+
+// --- UI ---
+function pintarLista() {
+  const cont = document.getElementById('zonas');
+  cont.innerHTML = '';
+  ZONAS.forEach(z => {
+    const div = document.createElement('div');
+    div.className = 'zona' + (z.id === activa ? ' activa' : '');
+    div.innerHTML = '<span class="color" style="background:' + z.color + '"></span>' +
+      '<span>' + z.nombre + '<br><small>' + z.descripcion + '<br>distrito ' + z.distrito_midagri + '</small></span>' +
+      '<span class="estado">' + estado(z.id) + '</span>';
+    div.onclick = () => {
+      activa = z.id;
+      mapa.pm.setPathOptions({ color: z.color });
+      pintarLista();
+      if (capas[z.id].length) mapa.fitBounds(L.featureGroup(capas[z.id]).getBounds());
+    };
+    cont.appendChild(div);
+  });
+}
+
+function agregarParte(capa, zonaId) {
+  const z = ZONAS.find(x => x.id === zonaId);
+  capa.setStyle({ color: z.color, weight: 3, fillOpacity: 0.15 });
+  capa.bindTooltip(z.nombre, { sticky: true });
+  capa.on('pm:edit', pintarLista);
+  capa._zona = zonaId;
+  if (!mapa.hasLayer(capa)) capa.addTo(mapa);
+  capas[zonaId].push(capa);
+  pintarLista();
+}
+
+function borrarPartes(zonaId) {
+  capas[zonaId].forEach(c => mapa.removeLayer(c));
+  capas[zonaId] = [];
+  pintarLista();
+}
+
+mapa.pm.addControls({ position: 'topleft', drawMarker: false, drawCircleMarker: false, drawPolyline: false,
+  drawRectangle: false, drawCircle: false, drawText: false, cutPolygon: false, rotateMode: false });
+mapa.pm.setGlobalOptions({ allowSelfIntersection: false });   // un contorno "en ocho" no tiene área válida
+mapa.pm.setPathOptions({ color: ZONAS[0].color });
+mapa.on('pm:create', e => agregarParte(e.layer, activa));
+mapa.on('pm:remove', e => {
+  const id = e.layer._zona;
+  if (!id) return;
+  capas[id] = capas[id].filter(c => c !== e.layer);
+  pintarLista();
+});
+
+function exportar() {
+  const hoy = new Date().toISOString().slice(0, 10);
+  const features = ZONAS.filter(z => capas[z.id].length).map(z => {
+    const polys = capas[z.id].map(c => c.toGeoJSON().geometry.coordinates);
+    const geometry = polys.length === 1 ? { type: 'Polygon', coordinates: polys[0] }
+                                        : { type: 'MultiPolygon', coordinates: polys };
+    const { color, ...props } = z;
+    return { type: 'Feature', properties: { ...props, fuente: 'dibujo_usuario', fecha: hoy }, geometry };
+  });
+  const gj = { type: 'FeatureCollection', features };
+  document.getElementById('salida').value = JSON.stringify(gj, null, 2);
+  return gj;
+}
+
+function importar(gj) {
+  gj.features.forEach(f => {
+    const id = f.properties && f.properties.id;
+    if (!capas[id]) return;
+    borrarPartes(id);
+    const polys = f.geometry.type === 'MultiPolygon' ? f.geometry.coordinates : [f.geometry.coordinates];
+    polys.forEach(c => agregarParte(L.polygon(c[0].map(([lon, lat]) => [lat, lon])), id));
+  });
+  const todas = Object.values(capas).flat();
+  if (todas.length) mapa.fitBounds(L.featureGroup(todas).getBounds());
+}
+
+document.getElementById('btnBorrar').onclick = () => borrarPartes(activa);
+document.getElementById('btnExportar').onclick = exportar;
+document.getElementById('btnDescargar').onclick = () => {
+  const blob = new Blob([JSON.stringify(exportar(), null, 2)], { type: 'application/geo+json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'geocercas.geojson';
+  a.click();
+};
+document.getElementById('btnImportar').onclick = () => importar(JSON.parse(document.getElementById('salida').value));
+document.getElementById('btnBuscar').onclick = async () => {
+  const q = document.getElementById('buscar').value.trim();
+  if (!q) return;
+  const r = await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(q));
+  const [hit] = await r.json();
+  if (hit) mapa.setView([+hit.lat, +hit.lon], 12);
+  else alert('Sin resultados');
+};
+
+// ?importar=<GeoJSON codificado> precarga un archivo (usado para verificar con Chrome headless).
+const precarga = new URLSearchParams(location.search).get('importar');
+if (precarga) importar(JSON.parse(precarga));
+
+pintarLista();
+</script>
+</body>
+</html>

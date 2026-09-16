@@ -44,14 +44,23 @@ def test_predecir_persiste_relee_y_total(app):
     assert d["es_extrapolacion"] is False
     assert d["confianza"] is not None
 
+    # El intervalo declara SIEMPRE su procedencia: sin esa bandera la UI no puede
+    # saber si el rango cubre lo que promete (ver tests/test_recalibracion.py).
+    assert "calibrado" in d["intervalo"]
+    assert d["intervalo"]["p10"] <= d["tn_ha"]
+    assert d["tn_ha"] <= d["intervalo"]["p90"]
+    assert d["dispersion_arboles"] is not None
+
     # se relee igual
     d2 = client.get(f"/api/lotes/{lid}/prediccion").get_json()
     assert d2["tn_ha"] == d["tn_ha"]
 
-    # total de campaña = suma por lote
+    # total de campaña = suma por lote (sin cosecha real aún: crudo == corregido)
     t = client.get(f"/api/campanas/{cid}/prediccion").get_json()
     assert t["n_lotes"] == 1
     assert t["tn_total"] == d["tn_total"]
+    assert t["tn_total_crudo"] == d["tn_total"]
+    assert t["recalibracion"]["aplicable"] is False
 
 
 def test_bandera_ood_en_lajoya(app):
