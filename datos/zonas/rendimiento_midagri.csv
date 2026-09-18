@@ -1,0 +1,216 @@
+anio,region,ambito,produccion_t,superficie_cosechada_ha,rendimiento_kg_ha,rendimiento_t_ha,precio_chacra_soles_kg,rendimiento_recalculado_kg_ha,dif_pct,fuente
+2016,Amazonas,region,1051.05,121.0,8686.36,8.69,,8686.4,0.0,anuario_2016.xlsx
+2016,Ancash,region,20456.4,2676.5,7642.97,7.64,,7643.0,0.0,anuario_2016.xlsx
+2016,Apurimac,region,3795.28,657.8,5769.66,5.77,,5769.7,0.0,anuario_2016.xlsx
+2016,Arequipa,region,12578.79,818.0,15377.49,15.38,,15377.5,0.0,anuario_2016.xlsx
+2016,Ayacucho,region,5219.0,786.0,6639.95,6.64,,6639.9,0.0,anuario_2016.xlsx
+2016,Cajamarca,region,4509.98,516.4,8733.51,8.73,,8733.5,0.0,anuario_2016.xlsx
+2016,Cusco,region,7861.0,750.0,10481.33,10.48,,10481.3,0.0,anuario_2016.xlsx
+2016,Huancavelica,region,728.66,73.0,9981.7,9.98,,9981.7,0.0,anuario_2016.xlsx
+2016,Huanuco,region,2833.0,316.0,8965.19,8.97,,8965.2,0.0,anuario_2016.xlsx
+2016,Ica,region,57049.21,3849.68,14819.21,14.82,,14819.2,0.0,anuario_2016.xlsx
+2016,Junin,region,34128.27,3563.0,9578.52,9.58,,9578.5,0.0,anuario_2016.xlsx
+2016,La Libertad,region,178272.39,13574.5,13132.89,13.13,,13132.9,0.0,anuario_2016.xlsx
+2016,Lambayeque,region,8278.0,823.0,10058.32,10.06,,10058.3,0.0,anuario_2016.xlsx
+2016,Lima,region,92070.0,6482.0,14203.95,14.2,,14203.9,0.0,anuario_2016.xlsx
+2016,Lima Metropolitana,region,1820.0,131.9,13798.33,13.8,,13798.3,0.0,anuario_2016.xlsx
+2016,Loreto,region,3453.0,339.0,10185.84,10.19,,10185.8,0.0,anuario_2016.xlsx
+2016,Madre De Dios,region,491.3,63.25,7767.59,7.77,,7767.6,0.0,anuario_2016.xlsx
+2016,Moquegua,region,6156.3,873.0,7051.89,7.05,,7051.9,0.0,anuario_2016.xlsx
+2016,Nacional,nacional,455394.17,37871.18,12024.82,12.02,,12024.8,0.0,anuario_2016.xlsx
+2016,Pasco,region,2383.53,160.0,14897.04,14.9,,14897.0,0.0,anuario_2016.xlsx
+2016,Piura,region,7025.0,696.0,10093.39,10.09,,10093.4,0.0,anuario_2016.xlsx
+2016,Puno,region,2469.0,242.0,10202.48,10.2,,10202.5,0.0,anuario_2016.xlsx
+2016,San Martin,region,301.0,25.0,12040.0,12.04,,12040.0,0.0,anuario_2016.xlsx
+2016,Tacna,region,377.0,59.0,6389.83,6.39,,6389.8,0.0,anuario_2016.xlsx
+2016,Tumbes,region,0.0,0.0,,,,,,anuario_2016.xlsx
+2016,Ucayali,region,2087.02,275.15,7585.02,7.59,,7585.0,0.0,anuario_2016.xlsx
+2017,Amazonas,region,1155.39,129.0,8956.5,8.96,1.24,8956.5,-0.0,anuario_2017.xls
+2017,Ancash,region,11472.8,2596.5,4418.56,4.42,3.27,4418.6,0.0,anuario_2017.xls
+2017,Apurimac,region,3944.85,554.11,7119.25,7.12,2.34,7119.3,-0.0,anuario_2017.xls
+2017,Arequipa,region,15862.42,883.0,17964.23,17.96,4.35,17964.2,0.0,anuario_2017.xls
+2017,Ayacucho,region,7772.0,1074.0,7236.5,7.24,2.99,7236.5,0.0,anuario_2017.xls
+2017,Cajamarca,region,5699.2,674.4,8450.77,8.45,1.86,8450.8,-0.0,anuario_2017.xls
+2017,Callao,region,0.0,0.0,,,,,,anuario_2017.xls
+2017,Cusco,region,4867.5,790.0,6161.39,6.16,2.18,6161.4,0.0,anuario_2017.xls
+2017,Huancavelica,region,811.47,74.0,10965.84,10.97,1.51,10965.8,-0.0,anuario_2017.xls
+2017,Huanuco,region,3296.9,380.0,8676.05,8.68,1.27,8676.1,0.0,anuario_2017.xls
+2017,Ica,region,53923.68,3784.68,14247.89,14.25,5.31,14247.9,0.0,anuario_2017.xls
+2017,Junin,region,36606.52,3779.0,9686.83,9.69,0.8,9686.8,-0.0,anuario_2017.xls
+2017,La Libertad,region,197271.28,13999.0,14091.81,14.09,3.71,14091.8,0.0,anuario_2017.xls
+2017,Lambayeque,region,9904.0,1419.0,6979.56,6.98,2.54,6979.6,0.0,anuario_2017.xls
+2017,Lima,region,86304.0,6492.0,13293.9,13.29,2.82,13293.9,0.0,anuario_2017.xls
+2017,Lima Metropolitana,region,1738.5,129.1,13466.31,13.47,2.46,13466.3,-0.0,anuario_2017.xls
+2017,Loreto,region,3513.0,334.0,10517.96,10.52,0.47,10518.0,0.0,anuario_2017.xls
+2017,Madre De Dios,region,422.7,62.75,6736.25,6.74,1.73,6736.3,-0.0,anuario_2017.xls
+2017,Moquegua,region,5061.09,963.0,5255.55,5.26,4.84,5255.5,-0.0,anuario_2017.xls
+2017,Nacional,nacional,466795.74,39628.6,11779.26,11.78,3.32,11779.3,0.0,anuario_2017.xls
+2017,Pasco,region,3065.63,161.0,19041.18,19.04,0.87,19041.2,0.0,anuario_2017.xls
+2017,Piura,region,8364.0,705.0,11863.83,11.86,2.64,11863.8,0.0,anuario_2017.xls
+2017,Puno,region,2463.0,244.0,10094.26,10.09,2.44,10094.3,-0.0,anuario_2017.xls
+2017,San Martin,region,312.7,25.0,12508.0,12.51,0.66,12508.0,0.0,anuario_2017.xls
+2017,Tacna,region,410.0,58.0,7068.97,7.07,5.85,7069.0,-0.0,anuario_2017.xls
+2017,Tumbes,region,0.0,0.0,,,,,,anuario_2017.xls
+2017,Ucayali,region,2553.11,318.06,8027.15,8.03,0.72,8027.1,0.0,anuario_2017.xls
+2018,Amazonas,region,1159.77,144.0,8053.96,8.05,1.38,8054.0,0.0,anuario_2018.xls
+2018,Ancash,region,17546.5,2680.5,6545.98,6.55,3.2,6546.0,0.0,anuario_2018.xls
+2018,Apurimac,region,4403.17,699.25,6296.99,6.3,2.61,6297.0,0.0,anuario_2018.xls
+2018,Arequipa,region,20085.09,1016.0,19768.79,19.77,3.98,19768.8,0.0,anuario_2018.xls
+2018,Ayacucho,region,6615.0,412.0,16055.83,16.06,2.94,16055.8,-0.0,anuario_2018.xls
+2018,Cajamarca,region,5002.98,450.4,11107.87,11.11,1.9,11107.9,0.0,anuario_2018.xls
+2018,Callao,region,0.0,0.0,,,,,,anuario_2018.xls
+2018,Cusco,region,5524.16,780.0,7082.26,7.08,1.41,7082.3,0.0,anuario_2018.xls
+2018,Huancavelica,region,898.54,101.0,8896.49,8.9,1.65,8896.5,-0.0,anuario_2018.xls
+2018,Huanuco,region,3565.0,410.0,8695.12,8.7,1.51,8695.1,0.0,anuario_2018.xls
+2018,Ica,region,66332.42,4327.68,15327.48,15.33,4.59,15327.5,0.0,anuario_2018.xls
+2018,Junin,region,41449.6,4019.0,10313.41,10.31,0.81,10313.4,0.0,anuario_2018.xls
+2018,La Libertad,region,204526.48,14241.6,14361.2,14.36,3.62,14361.2,0.0,anuario_2018.xls
+2018,Lambayeque,region,15559.0,1491.0,10435.28,10.44,5.06,10435.3,0.0,anuario_2018.xls
+2018,Lima,region,83606.94,6351.2,13163.96,13.16,3.4,13164.0,0.0,anuario_2018.xls
+2018,Lima Metropolitana,region,1503.8,121.1,12417.84,12.42,2.57,12417.8,0.0,anuario_2018.xls
+2018,Loreto,region,3530.0,334.0,10568.86,10.57,0.47,10568.9,-0.0,anuario_2018.xls
+2018,Madre De Dios,region,508.1,62.75,8097.21,8.1,2.23,8097.2,0.0,anuario_2018.xls
+2018,Moquegua,region,6777.75,1042.0,6504.56,6.5,4.31,6504.6,-0.0,anuario_2018.xls
+2018,Nacional,nacional,504516.63,40133.98,12570.81,12.57,3.38,12570.8,0.0,anuario_2018.xls
+2018,Pasco,region,2601.45,164.0,15862.5,15.86,0.95,15862.5,-0.0,anuario_2018.xls
+2018,Piura,region,7930.0,663.0,11960.78,11.96,2.89,11960.8,0.0,anuario_2018.xls
+2018,Puno,region,2460.0,244.0,10081.97,10.08,2.44,10082.0,0.0,anuario_2018.xls
+2018,San Martin,region,356.0,28.5,12491.23,12.49,0.93,12491.2,0.0,anuario_2018.xls
+2018,Tacna,region,280.0,38.0,7368.42,7.37,4.61,7368.4,0.0,anuario_2018.xls
+2018,Tumbes,region,0.0,0.0,,,,,,anuario_2018.xls
+2018,Ucayali,region,2294.88,313.0,7331.88,7.33,0.71,7331.9,0.0,anuario_2018.xls
+2019,Amazonas,region,1400.35,144.0,9724.65,9.72,1.51,9724.7,0.0,anuario_2019.xls
+2019,Ancash,region,20179.95,2880.5,7005.71,7.01,3.3,7005.7,0.0,anuario_2019.xls
+2019,Apurimac,region,4416.42,663.25,6658.76,6.66,2.83,6658.8,0.0,anuario_2019.xls
+2019,Arequipa,region,22731.28,1045.0,21752.42,21.75,3.83,21752.4,0.0,anuario_2019.xls
+2019,Ayacucho,region,16640.0,2351.0,7077.84,7.08,3.58,7077.8,0.0,anuario_2019.xls
+2019,Cajamarca,region,3676.25,609.5,6031.59,6.03,2.16,6031.6,0.0,anuario_2019.xls
+2019,Callao,region,0.0,0.0,0.0,,0.0,,,anuario_2019.xls
+2019,Cusco,region,6474.93,803.0,8063.42,8.06,2.48,8063.4,0.0,anuario_2019.xls
+2019,Huancavelica,region,2424.61,314.5,7709.41,7.71,2.77,7709.4,0.0,anuario_2019.xls
+2019,Huanuco,region,3547.0,405.5,8747.23,8.75,1.53,8747.2,0.0,anuario_2019.xls
+2019,Ica,region,71591.32,4968.18,14409.97,14.41,3.84,14410.0,0.0,anuario_2019.xls
+2019,Junin,region,44808.41,4078.0,10987.84,10.99,0.85,10987.8,0.0,anuario_2019.xls
+2019,La Libertad,region,202726.96,14677.1,13812.47,13.81,3.39,13812.5,0.0,anuario_2019.xls
+2019,Lambayeque,region,62174.0,5155.0,12060.91,12.06,3.71,12060.9,0.0,anuario_2019.xls
+2019,Lima,region,80192.1,6593.4,12162.48,12.16,3.39,12162.5,0.0,anuario_2019.xls
+2019,Lima Metropolitana,region,1498.88,122.1,12275.84,12.28,2.42,12275.8,0.0,anuario_2019.xls
+2019,Loreto,region,3555.0,334.0,10643.71,10.64,0.47,10643.7,0.0,anuario_2019.xls
+2019,Madre De Dios,region,608.1,65.5,9283.97,9.28,2.83,9284.0,0.0,anuario_2019.xls
+2019,Moquegua,region,7556.44,1100.0,6869.49,6.87,5.07,6869.5,0.0,anuario_2019.xls
+2019,Nacional,nacional,571991.85,,11940.06,11.94,3.22,,,anuario_2019.xls
+2019,Pasco,region,2941.76,270.0,10895.4,10.9,1.1,10895.4,0.0,anuario_2019.xls
+2019,Piura,region,7679.0,695.0,11048.92,11.05,2.39,11048.9,-0.0,anuario_2019.xls
+2019,Puno,region,2485.0,244.0,10184.43,10.18,2.45,10184.4,0.0,anuario_2019.xls
+2019,San Martin,region,416.2,48.0,8670.83,8.67,0.9,8670.8,0.0,anuario_2019.xls
+2019,Tacna,region,212.0,29.0,7310.34,7.31,4.93,7310.3,0.0,anuario_2019.xls
+2019,Tumbes,region,0.0,0.0,0.0,,0.0,,,anuario_2019.xls
+2019,Ucayali,region,2055.9,309.75,6637.28,6.64,0.73,6637.3,0.0,anuario_2019.xls
+2020,Amazonas,region,1172.06,144.0,8139.27,8.14,1.65,8139.3,0.0,anuario_2020.xls
+2020,Ancash,region,33362.95,3293.5,10129.94,10.13,3.18,10129.9,0.0,anuario_2020.xls
+2020,Apurimac,region,4957.2,756.25,6554.98,6.55,2.6,6555.0,0.0,anuario_2020.xls
+2020,Arequipa,region,27527.56,1241.0,22181.76,22.18,3.89,22181.8,0.0,anuario_2020.xls
+2020,Ayacucho,region,29498.0,3325.0,8871.58,8.87,4.15,8871.6,0.0,anuario_2020.xls
+2020,Cajamarca,region,4981.08,629.5,7912.76,7.91,2.22,7912.8,0.0,anuario_2020.xls
+2020,Callao,region,0.0,0.0,0.0,,0.0,,,anuario_2020.xls
+2020,Cusco,region,7536.5,834.94,9026.4,9.03,2.76,9026.4,0.0,anuario_2020.xls
+2020,Huancavelica,region,11883.1,1024.5,11598.93,11.6,3.44,11598.9,0.0,anuario_2020.xls
+2020,Huanuco,region,3697.8,424.0,8721.23,8.72,1.74,8721.2,0.0,anuario_2020.xls
+2020,Ica,region,80559.95,5241.98,15368.23,15.37,4.31,15368.2,0.0,anuario_2020.xls
+2020,Junin,region,45121.68,3945.0,11437.69,11.44,0.88,11437.7,0.0,anuario_2020.xls
+2020,La Libertad,region,215319.11,14740.6,14607.21,14.61,3.54,14607.2,0.0,anuario_2020.xls
+2020,Lambayeque,region,86008.08,5372.0,16010.44,16.01,4.45,16010.4,0.0,anuario_2020.xls
+2020,Lima,region,90254.3,7002.76,12888.39,12.89,3.26,12888.4,0.0,anuario_2020.xls
+2020,Lima Metropolitana,region,1296.94,107.1,12109.62,12.11,2.74,12109.6,0.0,anuario_2020.xls
+2020,Loreto,region,3565.0,334.0,10673.65,10.67,0.47,10673.7,0.0,anuario_2020.xls
+2020,Madre De Dios,region,610.5,70.0,8721.43,8.72,3.13,8721.4,0.0,anuario_2020.xls
+2020,Moquegua,region,7748.26,1122.0,6905.76,6.91,4.59,6905.8,0.0,anuario_2020.xls
+2020,Nacional,nacional,672232.24,51240.63,13119.13,13.12,3.46,13119.1,0.0,anuario_2020.xls
+2020,Pasco,region,4493.34,367.0,12243.43,12.24,1.74,12243.4,0.0,anuario_2020.xls
+2020,Piura,region,6204.0,594.0,10444.44,10.44,2.14,10444.4,0.0,anuario_2020.xls
+2020,Puno,region,2516.0,244.0,10311.48,10.31,2.47,10311.5,-0.0,anuario_2020.xls
+2020,San Martin,region,495.55,40.5,12235.8,12.24,1.25,12235.8,0.0,anuario_2020.xls
+2020,Tacna,region,287.0,38.0,7552.63,7.55,4.74,7552.6,0.0,anuario_2020.xls
+2020,Tumbes,region,0.0,0.0,0.0,,0.0,,,anuario_2020.xls
+2020,Ucayali,region,3136.29,349.0,8986.52,8.99,0.75,8986.5,0.0,anuario_2020.xls
+2021,Amazonas,region,1076.35,154.0,6989.27,6.99,1.69,6989.3,0.0,anuario_2021.xls
+2021,Ancash,region,37129.1,3678.5,10093.54,10.09,3.74,10093.5,0.0,anuario_2021.xls
+2021,Apurimac,region,10160.12,1482.5,6853.37,6.85,3.17,6853.4,0.0,anuario_2021.xls
+2021,Arequipa,region,24396.88,1327.0,18384.99,18.38,4.45,18385.0,0.0,anuario_2021.xls
+2021,Ayacucho,region,30771.0,3898.0,7894.05,7.89,5.83,7894.0,0.0,anuario_2021.xls
+2021,Cajamarca,region,4921.07,672.5,7317.58,7.32,2.34,7317.6,0.0,anuario_2021.xls
+2021,Callao,region,0.0,0.0,0.0,,0.0,,,anuario_2021.xls
+2021,Cusco,region,8504.1,886.0,9598.31,9.6,2.77,9598.3,0.0,anuario_2021.xls
+2021,Huancavelica,region,15565.93,1459.5,10665.25,10.67,4.52,10665.2,-0.0,anuario_2021.xls
+2021,Huanuco,region,3983.0,454.0,8773.13,8.77,2.11,8773.1,0.0,anuario_2021.xls
+2021,Ica,region,81699.79,5682.22,14378.15,14.38,5.16,14378.1,0.0,anuario_2021.xls
+2021,Junin,region,52099.82,4362.0,11944.02,11.94,1.36,11944.0,0.0,anuario_2021.xls
+2021,La Libertad,region,226699.81,14849.1,15266.91,15.27,3.74,15266.9,0.0,anuario_2021.xls
+2021,Lambayeque,region,124428.75,5665.0,21964.47,21.96,4.03,21964.5,0.0,anuario_2021.xls
+2021,Lima,region,124188.5,7044.3,17629.64,17.63,3.9,17629.6,0.0,anuario_2021.xls
+2021,Lima Metropolitana,region,1393.7,107.1,13013.07,13.01,2.92,13013.1,0.0,anuario_2021.xls
+2021,Loreto,region,3581.0,335.0,10689.55,10.69,0.47,10689.6,-0.0,anuario_2021.xls
+2021,Madre De Dios,region,633.5,71.5,8860.14,8.86,4.55,8860.1,0.0,anuario_2021.xls
+2021,Moquegua,region,8315.42,1160.0,7168.46,7.17,5.55,7168.5,0.0,anuario_2021.xls
+2021,Nacional,nacional,778790.87,55130.22,14126.39,14.13,3.84,14126.4,0.0,anuario_2021.xls
+2021,Pasco,region,6186.85,516.0,11990.01,11.99,1.91,11990.0,-0.0,anuario_2021.xls
+2021,Piura,region,5973.0,611.0,9775.78,9.78,2.47,9775.8,0.0,anuario_2021.xls
+2021,Puno,region,2499.0,244.0,10241.8,10.24,2.44,10241.8,-0.0,anuario_2021.xls
+2021,San Martin,region,597.3,57.0,10478.95,10.48,1.15,10478.9,-0.0,anuario_2021.xls
+2021,Tacna,region,421.0,58.0,7258.62,7.26,5.02,7258.6,0.0,anuario_2021.xls
+2021,Tumbes,region,0.0,0.0,0.0,,0.0,,,anuario_2021.xls
+2021,Ucayali,region,3565.9,356.0,10016.57,10.02,0.87,10016.6,0.0,anuario_2021.xls
+2022,Amazonas,region,1330.58,159.0,8368.43,8.37,2.08,8368.4,-0.0,anuario_2022.xlsx
+2022,Ancash,region,38291.2,3693.5,10367.19,10.37,4.18,10367.2,0.0,anuario_2022.xlsx
+2022,Apurimac,region,12057.9,1851.5,6512.5,6.51,3.2,6512.5,0.0,anuario_2022.xlsx
+2022,Arequipa,region,21102.27,1337.0,15783.3,15.78,3.85,15783.3,0.0,anuario_2022.xlsx
+2022,Ayacucho,region,47040.0,5024.0,9363.06,9.36,4.84,9363.1,0.0,anuario_2022.xlsx
+2022,Cajamarca,region,4860.64,705.5,6889.64,6.89,2.89,6889.6,0.0,anuario_2022.xlsx
+2022,Callao,region,0.0,0.0,0.0,,0.0,,,anuario_2022.xlsx
+2022,Cusco,region,9531.0,930.0,10248.39,10.25,3.07,10248.4,0.0,anuario_2022.xlsx
+2022,Huancavelica,region,24620.46,2389.4,10304.03,10.3,4.18,10304.0,-0.0,anuario_2022.xlsx
+2022,Huanuco,region,4168.0,493.0,8454.36,8.45,2.72,8454.4,0.0,anuario_2022.xlsx
+2022,Ica,region,94366.03,6504.52,14507.76,14.51,3.55,14507.8,0.0,anuario_2022.xlsx
+2022,Junin,region,61423.27,4682.0,13119.02,13.12,1.51,13119.0,0.0,anuario_2022.xlsx
+2022,La Libertad,region,254987.5,15833.1,16104.71,16.1,3.69,16104.7,-0.0,anuario_2022.xlsx
+2022,Lambayeque,region,126585.0,11452.0,11053.53,11.05,3.1,11053.5,0.0,anuario_2022.xlsx
+2022,Lima,region,127351.7,7480.13,17025.33,17.03,3.01,17025.3,0.0,anuario_2022.xlsx
+2022,Lima Metropolitana,region,1383.48,107.1,12917.65,12.92,3.2,12917.6,0.0,anuario_2022.xlsx
+2022,Loreto,region,3620.0,352.0,10284.09,10.28,0.48,10284.1,-0.0,anuario_2022.xlsx
+2022,Madre De Dios,region,610.8,71.5,8542.66,8.54,5.22,8542.7,0.0,anuario_2022.xlsx
+2022,Moquegua,region,9152.96,1233.0,7423.32,7.42,5.75,7423.3,0.0,anuario_2022.xlsx
+2022,Nacional,nacional,861586.47,66205.25,13013.87,13.01,3.38,13013.9,0.0,anuario_2022.xlsx
+2022,Pasco,region,6455.34,521.0,12390.29,12.39,1.91,12390.3,0.0,anuario_2022.xlsx
+2022,Piura,region,5346.0,704.0,7593.75,7.59,2.22,7593.8,0.0,anuario_2022.xlsx
+2022,Puno,region,2522.4,244.0,10337.7,10.34,2.52,10337.7,0.0,anuario_2022.xlsx
+2022,San Martin,region,751.0,56.0,13410.71,13.41,1.38,13410.7,0.0,anuario_2022.xlsx
+2022,Tacna,region,574.0,54.0,10629.63,10.63,5.26,10629.6,0.0,anuario_2022.xlsx
+2022,Tumbes,region,0.0,0.0,0.0,,0.0,,,anuario_2022.xlsx
+2022,Ucayali,region,3454.94,328.0,10533.34,10.53,1.24,10533.3,0.0,anuario_2022.xlsx
+2023,Amazonas,region,1231.96,160.0,7699.75,7.7,2.69,7699.7,0.0,anuario_2023.xlsx
+2023,Ancash,region,38430.25,3702.5,10379.54,10.38,4.65,10379.5,0.0,anuario_2023.xlsx
+2023,Apurimac,region,14194.68,2170.5,6539.82,6.54,2.97,6539.8,0.0,anuario_2023.xlsx
+2023,Arequipa,region,28328.26,1779.0,15923.7,15.92,3.75,15923.7,0.0,anuario_2023.xlsx
+2023,Ayacucho,region,46928.0,5398.0,8693.59,8.69,4.27,8693.6,0.0,anuario_2023.xlsx
+2023,Cajamarca,region,5123.82,744.5,6882.23,6.88,3.09,6882.2,0.0,anuario_2023.xlsx
+2023,Callao,region,0.0,0.0,0.0,,0.0,,,anuario_2023.xlsx
+2023,Cusco,region,9949.5,921.0,10802.93,10.8,3.12,10802.9,0.0,anuario_2023.xlsx
+2023,Huancavelica,region,26176.56,2714.8,9642.17,9.64,3.21,9642.2,0.0,anuario_2023.xlsx
+2023,Huanuco,region,5148.0,655.0,7859.54,7.86,3.48,7859.5,-0.0,anuario_2023.xlsx
+2023,Ica,region,142530.17,7063.52,20178.35,20.18,3.94,20178.3,0.0,anuario_2023.xlsx
+2023,Junin,region,66336.31,4836.75,13715.06,13.72,1.58,13715.1,0.0,anuario_2023.xlsx
+2023,La Libertad,region,292972.59,16979.75,17254.23,17.25,3.38,17254.2,0.0,anuario_2023.xlsx
+2023,Lambayeque,region,161963.0,5849.0,27690.72,27.69,2.8,27690.7,0.0,anuario_2023.xlsx
+2023,Lima,region,177609.72,8007.04,22181.7,22.18,3.21,22181.7,0.0,anuario_2023.xlsx
+2023,Lima Metropolitana,region,1204.95,92.2,13068.87,13.07,3.64,13068.9,0.0,anuario_2023.xlsx
+2023,Loreto,region,3653.0,362.0,10091.16,10.09,0.48,10091.2,-0.0,anuario_2023.xlsx
+2023,Madre De Dios,region,552.3,67.5,8182.22,8.18,6.05,8182.2,0.0,anuario_2023.xlsx
+2023,Moquegua,region,9005.67,1481.0,6080.8,6.08,6.61,6080.8,0.0,anuario_2023.xlsx
+2023,Nacional,nacional,1050809.88,65069.29,16149.09,16.15,3.3,16149.1,0.0,anuario_2023.xlsx
+2023,Pasco,region,6026.0,579.0,10407.6,10.41,2.2,10407.6,0.0,anuario_2023.xlsx
+2023,Piura,region,6560.0,767.0,8552.8,8.55,1.46,8552.8,0.0,anuario_2023.xlsx
+2023,Puno,region,2580.7,250.0,10322.8,10.32,3.02,10322.8,0.0,anuario_2023.xlsx
+2023,San Martin,region,670.5,54.0,12416.67,12.42,1.39,12416.7,0.0,anuario_2023.xlsx
+2023,Tacna,region,736.0,79.0,9316.46,9.32,4.34,9316.5,0.0,anuario_2023.xlsx
+2023,Tumbes,region,0.0,0.0,0.0,,0.0,,,anuario_2023.xlsx
+2023,Ucayali,region,2897.94,356.23,8135.02,8.14,1.49,8135.0,0.0,anuario_2023.xlsx

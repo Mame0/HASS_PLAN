@@ -1,0 +1,396 @@
+{
+  "generado": "2026-09-16",
+  "zonas": [
+    "la_joya",
+    "majes"
+  ],
+  "campanas": [
+    2001,
+    2026
+  ],
+  "n_campanas": 26,
+  "criterio": {
+    "variables_clave": [
+      "hfrio_19",
+      "hac_25",
+      "eto",
+      "humedad",
+      "t_min"
+    ],
+    "d_minimo": 1.0,
+    "claves_necesarias": 3,
+    "regla": "|d| >= d_minimo y |diferencia| > SD espacial media"
+  },
+  "resultados": {
+    "hfrio_19": {
+      "media": {
+        "la_joya": 4823.88,
+        "majes": 5518.56
+      },
+      "sd_interanual": {
+        "la_joya": 415.11,
+        "majes": 255.27
+      },
+      "diferencia": -694.68,
+      "d": -2.02,
+      "sd_espacial_media": 603.71,
+      "p_wilcoxon": 0.0,
+      "r_entre_zonas": 0.923,
+      "separa": true,
+      "clave": true
+    },
+    "hfrio_15": {
+      "media": {
+        "la_joya": 817.36,
+        "majes": 1542.97
+      },
+      "sd_interanual": {
+        "la_joya": 208.95,
+        "majes": 366.57
+      },
+      "diferencia": -725.61,
+      "d": -2.43,
+      "sd_espacial_media": 404.48,
+      "p_wilcoxon": 0.0,
+      "r_entre_zonas": 0.724,
+      "separa": true,
+      "clave": false
+    },
+    "hfrio_14": {
+      "media": {
+        "la_joya": 406.41,
+        "majes": 786.81
+      },
+      "sd_interanual": {
+        "la_joya": 119.91,
+        "majes": 239.18
+      },
+      "diferencia": -380.4,
+      "d": -2.01,
+      "sd_espacial_media": 255.64,
+      "p_wilcoxon": 0.0,
+      "r_entre_zonas": 0.695,
+      "separa": true,
+      "clave": false
+    },
+    "hfrio_14_19": {
+      "media": {
+        "la_joya": 4417.47,
+        "majes": 4731.75
+      },
+      "sd_interanual": {
+        "la_joya": 325.73,
+        "majes": 161.99
+      },
+      "diferencia": -314.28,
+      "d": -1.22,
+      "sd_espacial_media": 486.89,
+      "p_wilcoxon": 0.0,
+      "r_entre_zonas": 0.656,
+      "separa": false,
+      "clave": false
+    },
+    "hac_20_25": {
+      "media": {
+        "la_joya": 2708.81,
+        "majes": 2464.13
+      },
+      "sd_interanual": {
+        "la_joya": 130.56,
+        "majes": 116.7
+      },
+      "diferencia": 244.68,
+      "d": 1.98,
+      "sd_espacial_media": 173.04,
+      "p_wilcoxon": 0.0,
+      "r_entre_zonas": 0.806,
+      "separa": true,
+      "clave": false
+    },
+    "hac_25": {
+      "media": {
+        "la_joya": 470.81,
+        "majes": 215.47
+      },
+      "sd_interanual": {
+        "la_joya": 195.93,
+        "majes": 118.99
+      },
+      "diferencia": 255.34,
+      "d": 1.58,
+      "sd_espacial_media": 332.64,
+      "p_wilcoxon": 0.0,
+      "r_entre_zonas": 0.934,
+      "separa": false,
+      "clave": true
+    },
+    "t_prom": {
+      "media": {
+        "la_joya": 19.09,
+        "majes": 18.18
+      },
+      "sd_interanual": {
+        "la_joya": 0.45,
+        "majes": 0.4
+      },
+      "diferencia": 0.91,
+      "d": 2.11,
+      "sd_espacial_media": 0.7,
+      "p_wilcoxon": 0.0,
+      "r_entre_zonas": 0.871,
+      "separa": true,
+      "clave": false
+    },
+    "t_min": {
+      "media": {
+        "la_joya": 15.18,
+        "majes": 14.41
+      },
+      "sd_interanual": {
+        "la_joya": 0.38,
+        "majes": 0.39
+      },
+      "diferencia": 0.77,
+      "d": 1.99,
+      "sd_espacial_media": 0.64,
+      "p_wilcoxon": 0.0,
+      "r_entre_zonas": 0.685,
+      "separa": true,
+      "clave": true
+    },
+    "t_max": {
+      "media": {
+        "la_joya": 24.25,
+        "majes": 23.53
+      },
+      "sd_interanual": {
+        "la_joya": 0.5,
+        "majes": 0.44
+      },
+      "diferencia": 0.72,
+      "d": 1.54,
+      "sd_espacial_media": 0.85,
+      "p_wilcoxon": 0.0,
+      "r_entre_zonas": 0.924,
+      "separa": false,
+      "clave": false
+    },
+    "humedad": {
+      "media": {
+        "la_joya": 55.7,
+        "majes": 62.04
+      },
+      "sd_interanual": {
+        "la_joya": 2.32,
+        "majes": 1.93
+      },
+      "diferencia": -6.34,
+      "d": -2.97,
+      "sd_espacial_media": 3.61,
+      "p_wilcoxon": 0.0,
+      "r_entre_zonas": 0.958,
+      "separa": true,
+      "clave": true
+    },
+    "lluvia": {
+      "media": {
+        "la_joya": 182.94,
+        "majes": 90.38
+      },
+      "sd_interanual": {
+        "la_joya": 78.09,
+        "majes": 46.11
+      },
+      "diferencia": 92.57,
+      "d": 1.44,
+      "sd_espacial_media": 141.27,
+      "p_wilcoxon": 0.0,
+      "r_entre_zonas": 0.864,
+      "separa": false,
+      "clave": false
+    },
+    "eto": {
+      "media": {
+        "la_joya": 1639.36,
+        "majes": 1576.24
+      },
+      "sd_interanual": {
+        "la_joya": 49.97,
+        "majes": 41.33
+      },
+      "diferencia": 63.12,
+      "d": 1.38,
+      "sd_espacial_media": 44.55,
+      "p_wilcoxon": 0.0,
+      "r_entre_zonas": 0.922,
+      "separa": true,
+      "clave": true
+    }
+  },
+  "claves_que_separan": [
+    "hfrio_19",
+    "eto",
+    "humedad",
+    "t_min"
+  ],
+  "h1_se_cumple": true,
+  "ood_vs_nepena": {
+    "la_joya": [
+      {
+        "variable": "hfrio_19",
+        "media": 4823.88,
+        "rango": [
+          2264.0,
+          4722.0
+        ],
+        "posicion": "encima"
+      },
+      {
+        "variable": "hfrio_15",
+        "media": 817.36,
+        "rango": [
+          45.0,
+          782.0
+        ],
+        "posicion": "encima"
+      },
+      {
+        "variable": "hfrio_14",
+        "media": 406.41,
+        "rango": [
+          8.0,
+          265.0
+        ],
+        "posicion": "encima"
+      },
+      {
+        "variable": "t_min",
+        "media": 15.18,
+        "rango": [
+          16.01,
+          18.22
+        ],
+        "posicion": "debajo"
+      },
+      {
+        "variable": "humedad",
+        "media": 55.7,
+        "rango": [
+          74.8,
+          77.18
+        ],
+        "posicion": "debajo"
+      },
+      {
+        "variable": "lluvia",
+        "media": 182.94,
+        "rango": [
+          27.1,
+          91.3
+        ],
+        "posicion": "encima"
+      },
+      {
+        "variable": "eto",
+        "media": 1639.36,
+        "rango": [
+          1391.45,
+          1551.89
+        ],
+        "posicion": "encima"
+      }
+    ],
+    "majes": [
+      {
+        "variable": "hfrio_19",
+        "media": 5518.56,
+        "rango": [
+          2264.0,
+          4722.0
+        ],
+        "posicion": "encima"
+      },
+      {
+        "variable": "hfrio_15",
+        "media": 1542.97,
+        "rango": [
+          45.0,
+          782.0
+        ],
+        "posicion": "encima"
+      },
+      {
+        "variable": "hfrio_14",
+        "media": 786.81,
+        "rango": [
+          8.0,
+          265.0
+        ],
+        "posicion": "encima"
+      },
+      {
+        "variable": "hfrio_14_19",
+        "media": 4731.75,
+        "rango": [
+          2256.0,
+          4614.0
+        ],
+        "posicion": "encima"
+      },
+      {
+        "variable": "hac_20_25",
+        "media": 2464.13,
+        "rango": [
+          2571.0,
+          4443.0
+        ],
+        "posicion": "debajo"
+      },
+      {
+        "variable": "hac_25",
+        "media": 215.47,
+        "rango": [
+          290.0,
+          1107.0
+        ],
+        "posicion": "debajo"
+      },
+      {
+        "variable": "t_prom",
+        "media": 18.18,
+        "rango": [
+          18.85,
+          21.2
+        ],
+        "posicion": "debajo"
+      },
+      {
+        "variable": "t_min",
+        "media": 14.41,
+        "rango": [
+          16.01,
+          18.22
+        ],
+        "posicion": "debajo"
+      },
+      {
+        "variable": "humedad",
+        "media": 62.04,
+        "rango": [
+          74.8,
+          77.18
+        ],
+        "posicion": "debajo"
+      },
+      {
+        "variable": "eto",
+        "media": 1576.24,
+        "rango": [
+          1391.45,
+          1551.89
+        ],
+        "posicion": "encima"
+      }
+    ]
+  }
+}

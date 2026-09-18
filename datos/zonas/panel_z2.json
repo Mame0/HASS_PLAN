@@ -1,0 +1,205 @@
+{
+  "generado": "2026-09-17",
+  "region_objetivo": "Arequipa",
+  "campanas_con_objetivo": [
+    2016,
+    2023
+  ],
+  "n_campanas": 8,
+  "zonas": [
+    "la_joya",
+    "majes"
+  ],
+  "correlaciones": {
+    "hfrio_19": {
+      "la_joya": {
+        "r": -0.051,
+        "p": 0.905,
+        "rho": -0.048,
+        "n": 8
+      },
+      "majes": {
+        "r": -0.059,
+        "p": 0.8904,
+        "rho": -0.095,
+        "n": 8
+      }
+    },
+    "hfrio_15": {
+      "la_joya": {
+        "r": -0.549,
+        "p": 0.1591,
+        "rho": -0.429,
+        "n": 8
+      },
+      "majes": {
+        "r": -0.432,
+        "p": 0.2847,
+        "rho": -0.095,
+        "n": 8
+      }
+    },
+    "hfrio_14": {
+      "la_joya": {
+        "r": -0.714,
+        "p": 0.0465,
+        "rho": -0.69,
+        "n": 8
+      },
+      "majes": {
+        "r": -0.477,
+        "p": 0.2324,
+        "rho": -0.19,
+        "n": 8
+      }
+    },
+    "hfrio_14_19": {
+      "la_joya": {
+        "r": 0.1,
+        "p": 0.8139,
+        "rho": -0.048,
+        "n": 8
+      },
+      "majes": {
+        "r": 0.736,
+        "p": 0.0375,
+        "rho": 0.643,
+        "n": 8
+      }
+    },
+    "hac_20_25": {
+      "la_joya": {
+        "r": -0.205,
+        "p": 0.6269,
+        "rho": -0.143,
+        "n": 8
+      },
+      "majes": {
+        "r": 0.326,
+        "p": 0.4307,
+        "rho": 0.048,
+        "n": 8
+      }
+    },
+    "hac_25": {
+      "la_joya": {
+        "r": 0.04,
+        "p": 0.9246,
+        "rho": 0.214,
+        "n": 8
+      },
+      "majes": {
+        "r": -0.109,
+        "p": 0.7965,
+        "rho": 0.19,
+        "n": 8
+      }
+    },
+    "t_prom": {
+      "la_joya": {
+        "r": 0.139,
+        "p": 0.742,
+        "rho": 0.084,
+        "n": 8
+      },
+      "majes": {
+        "r": 0.231,
+        "p": 0.5817,
+        "rho": 0.095,
+        "n": 8
+      }
+    },
+    "t_min": {
+      "la_joya": {
+        "r": 0.303,
+        "p": 0.4663,
+        "rho": 0.214,
+        "n": 8
+      },
+      "majes": {
+        "r": 0.358,
+        "p": 0.3844,
+        "rho": 0.024,
+        "n": 8
+      }
+    },
+    "t_max": {
+      "la_joya": {
+        "r": 0.009,
+        "p": 0.9827,
+        "rho": 0.095,
+        "n": 8
+      },
+      "majes": {
+        "r": 0.116,
+        "p": 0.7847,
+        "rho": 0.095,
+        "n": 8
+      }
+    },
+    "humedad": {
+      "la_joya": {
+        "r": 0.378,
+        "p": 0.3558,
+        "rho": 0.571,
+        "n": 8
+      },
+      "majes": {
+        "r": 0.475,
+        "p": 0.2338,
+        "rho": 0.667,
+        "n": 8
+      }
+    },
+    "lluvia": {
+      "la_joya": {
+        "r": 0.444,
+        "p": 0.2703,
+        "rho": 0.5,
+        "n": 8
+      },
+      "majes": {
+        "r": 0.458,
+        "p": 0.2534,
+        "rho": 0.548,
+        "n": 8
+      }
+    },
+    "eto": {
+      "la_joya": {
+        "r": -0.288,
+        "p": 0.4896,
+        "rho": -0.381,
+        "n": 8
+      },
+      "majes": {
+        "r": -0.452,
+        "p": 0.261,
+        "rho": -0.429,
+        "n": 8
+      }
+    }
+  },
+  "controles": {
+    "var_superficie_pct": {
+      "r": -0.13,
+      "p": 0.7811,
+      "n": 7
+    },
+    "rendimiento_anterior_t_ha": {
+      "r": 0.572,
+      "p": 0.1801,
+      "n": 7
+    },
+    "superficie_cosechada_ha": {
+      "r": -0.194,
+      "p": 0.6453,
+      "n": 8
+    }
+  },
+  "avisos": [
+    "El objetivo es de la region Arequipa: las dos zonas comparten el mismo valor, asi que el efecto de zona NO es identificable con este dato.",
+    "Solo hay 8 campanas con objetivo (2016-2023): insuficiente para ajustar y validar un modelo (H2 queda fuera de alcance con esta fuente).",
+    "El rendimiento distrital no existe publicado (ver cabecera de rendimiento_midagri.py)."
+  ]
+}

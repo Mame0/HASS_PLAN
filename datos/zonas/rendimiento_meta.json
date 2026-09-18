@@ -1,0 +1,49 @@
+{
+  "generado": "2026-09-17",
+  "fuente": "https://www.gob.pe/institucion/midagri/informes-publicaciones/2730325-compendio-anual-de-produccion-agricola",
+  "anuarios": [
+    "anuario_2016.xlsx",
+    "anuario_2017.xls",
+    "anuario_2018.xls",
+    "anuario_2019.xls",
+    "anuario_2020.xls",
+    "anuario_2021.xls",
+    "anuario_2022.xlsx",
+    "anuario_2023.xlsx"
+  ],
+  "anios": [
+    2016,
+    2023
+  ],
+  "filas": 215,
+  "regiones": [
+    "Amazonas",
+    "Ancash",
+    "Apurimac",
+    "Arequipa",
+    "Ayacucho",
+    "Cajamarca",
+    "Callao",
+    "Cusco",
+    "Huancavelica",
+    "Huanuco",
+    "Ica",
+    "Junin",
+    "La Libertad",
+    "Lambayeque",
+    "Lima",
+    "Lima Metropolitana",
+    "Loreto",
+    "Madre De Dios",
+    "Moquegua",
+    "Pasco",
+    "Piura",
+    "Puno",
+    "San Martin",
+    "Tacna",
+    "Tumbes",
+    "Ucayali"
+  ],
+  "granularidad": "region",
+  "avisos": []
+}

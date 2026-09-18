@@ -1,0 +1,258 @@
+{
+  "generado": "2026-09-17",
+  "criterio": "mediana de los centros de poligonos landuse=farmland|orchard (OSM) en el valle paltero de la region; Arequipa usa las geocercas de Z0",
+  "radio_grados": 0.12,
+  "regiones": {
+    "La Libertad": [
+      {
+        "zona": "Viru",
+        "nombre": "Viru",
+        "lat": -8.40084,
+        "lon": -78.798282,
+        "metodo": "mediana_osm",
+        "n_poligonos_osm": 594,
+        "elevacion_m": 65,
+        "apto": true,
+        "revision": "visual sobre satelite 2026-09-17: sobre campos de Chavimochic"
+      },
+      {
+        "zona": "Chao",
+        "nombre": "Chao",
+        "lat": -8.56331,
+        "lon": -78.652653,
+        "metodo": "mediana_osm",
+        "n_poligonos_osm": 1624,
+        "elevacion_m": 120,
+        "apto": true,
+        "revision": "visual sobre satelite 2026-09-17: sobre campos"
+      }
+    ],
+    "Lima": [
+      {
+        "zona": "Huaral-Chancay",
+        "nombre": "Huaral-Chancay",
+        "lat": -11.507821,
+        "lon": -77.222296,
+        "metodo": "mediana_osm",
+        "n_poligonos_osm": 588,
+        "elevacion_m": 149,
+        "apto": true,
+        "revision": "visual sobre satelite 2026-09-17: valle de Chancay, campos alrededor"
+      },
+      {
+        "zona": "Canete",
+        "nombre": "Canete",
+        "lat": -13.064037,
+        "lon": -76.35418,
+        "metodo": "mediana_osm",
+        "n_poligonos_osm": 832,
+        "elevacion_m": 80,
+        "apto": true,
+        "revision": "visual sobre satelite 2026-09-17: valle de Canete, sobre campos"
+      }
+    ],
+    "Ica": [
+      {
+        "zona": "Villacuri-Salas",
+        "nombre": "Villacuri-Salas",
+        "lat": -14.013414,
+        "lon": -75.745046,
+        "metodo": "mediana_osm",
+        "n_poligonos_osm": 261,
+        "elevacion_m": 425,
+        "apto": true,
+        "revision": "visual sobre satelite 2026-09-17: sobre campos de Villacuri"
+      },
+      {
+        "zona": "Chincha",
+        "nombre": "Chincha",
+        "lat": -13.451364,
+        "lon": -76.101494,
+        "metodo": "mediana_osm",
+        "n_poligonos_osm": 458,
+        "elevacion_m": 96,
+        "apto": true,
+        "revision": "visual sobre satelite 2026-09-17: sobre campos"
+      }
+    ],
+    "Lambayeque": [
+      {
+        "zona": "Olmos",
+        "nombre": "Olmos",
+        "lat": -5.921057,
+        "lon": -79.751285,
+        "metodo": "mediana_osm",
+        "n_poligonos_osm": 93,
+        "elevacion_m": 151,
+        "apto": false,
+        "revision": "visual sobre satelite 2026-09-17: cayo en el bosque seco de los cerros, no en la irrigacion"
+      },
+      {
+        "zona": "Motupe",
+        "nombre": "Motupe",
+        "lat": -6.213613,
+        "lon": -79.738647,
+        "metodo": "mediana_osm",
+        "n_poligonos_osm": 115,
+        "elevacion_m": 109,
+        "apto": true,
+        "revision": "visual sobre satelite 2026-09-17: sobre campos de Motupe"
+      }
+    ],
+    "Junin": [
+      {
+        "zona": "Pichanaki",
+        "nombre": "Pichanaki",
+        "lat": -10.943019,
+        "lon": -74.845485,
+        "metodo": "mediana_osm",
+        "n_poligonos_osm": 7,
+        "elevacion_m": 490,
+        "apto": false,
+        "revision": "visual sobre satelite 2026-09-17: selva alta: sin mancha agricola clara y OSM casi sin mapear (7)"
+      },
+      {
+        "zona": "Chanchamayo",
+        "nombre": "Chanchamayo",
+        "lat": -10.937618,
+        "lon": -75.181232,
+        "metodo": "mediana_osm",
+        "n_poligonos_osm": 15,
+        "elevacion_m": 625,
+        "apto": false,
+        "revision": "visual sobre satelite 2026-09-17: monte y rio; OSM casi sin mapear (15)"
+      }
+    ],
+    "Ancash": [
+      {
+        "zona": "Nepena",
+        "nombre": "Nepena",
+        "lat": -9.111437,
+        "lon": -78.469128,
+        "metodo": "mediana_osm",
+        "n_poligonos_osm": 318,
+        "elevacion_m": 180,
+        "apto": true,
+        "revision": "visual sobre satelite 2026-09-17: sobre campos del valle de Nepena"
+      },
+      {
+        "zona": "Casma",
+        "nombre": "Casma",
+        "lat": -9.472098,
+        "lon": -78.300636,
+        "metodo": "mediana_osm",
+        "n_poligonos_osm": 98,
+        "elevacion_m": 45,
+        "apto": true,
+        "revision": "visual sobre satelite 2026-09-17: valle de Casma, campos junto al pueblo"
+      }
+    ],
+    "Ayacucho": [
+      {
+        "zona": "Luricocha-Huanta",
+        "nombre": "Luricocha-Huanta",
+        "lat": -12.943895,
+        "lon": -74.252522,
+        "metodo": "mediana_osm",
+        "n_poligonos_osm": 6,
+        "elevacion_m": 2586,
+        "apto": false,
+        "revision": "visual sobre satelite 2026-09-17: ladera; OSM casi sin mapear (6)"
+      },
+      {
+        "zona": "Valle de Ayacucho",
+        "nombre": "Valle de Ayacucho",
+        "lat": -13.143677,
+        "lon": -74.205669,
+        "metodo": "mediana_osm",
+        "n_poligonos_osm": 52,
+        "elevacion_m": 2673,
+        "apto": false,
+        "revision": "visual sobre satelite 2026-09-17: cayo sobre la ciudad de Ayacucho"
+      }
+    ],
+    "Arequipa": [
+      {
+        "zona": "la_joya",
+        "nombre": "geocerca la_joya",
+        "lat": -16.485473,
+        "lon": -71.830673,
+        "metodo": "geocerca_z0_referencia",
+        "n_poligonos_osm": null,
+        "elevacion_m": 1560,
+        "apto": true,
+        "revision": "visual sobre satelite 2026-09-17: punto de cultivo verificado en Z0 (geocercas)"
+      },
+      {
+        "zona": "majes",
+        "nombre": "geocerca majes",
+        "lat": -16.309596,
+        "lon": -72.205582,
+        "metodo": "geocerca_z0_referencia",
+        "n_poligonos_osm": null,
+        "elevacion_m": 1487,
+        "apto": true,
+        "revision": "visual sobre satelite 2026-09-17: punto de cultivo verificado en Z0 (geocercas)"
+      }
+    ],
+    "Moquegua": [
+      {
+        "zona": "Valle de Moquegua",
+        "nombre": "Valle de Moquegua",
+        "lat": -17.199416,
+        "lon": -70.941166,
+        "metodo": "mediana_osm",
+        "n_poligonos_osm": 26,
+        "elevacion_m": 1409,
+        "apto": false,
+        "revision": "visual sobre satelite 2026-09-17: zona urbana del valle; OSM escaso (26)"
+      },
+      {
+        "zona": "Omate",
+        "nombre": "Omate",
+        "lat": -16.752371,
+        "lon": -70.865971,
+        "metodo": "mediana_osm",
+        "n_poligonos_osm": 1,
+        "elevacion_m": 1840,
+        "apto": false,
+        "revision": "visual sobre satelite 2026-09-17: cerros; un solo poligono en OSM"
+      }
+    ],
+    "Apurimac": [
+      {
+        "zona": "Curahuasi",
+        "nombre": "Curahuasi",
+        "lat": -13.520636,
+        "lon": -72.62154,
+        "metodo": "mediana_osm",
+        "n_poligonos_osm": 17,
+        "elevacion_m": 2799,
+        "apto": false,
+        "revision": "visual sobre satelite 2026-09-17: monte en ladera; OSM escaso (17)"
+      },
+      {
+        "zona": "Abancay",
+        "nombre": "Abancay",
+        "lat": -13.617785,
+        "lon": -72.891768,
+        "metodo": "mediana_osm",
+        "n_poligonos_osm": 3,
+        "elevacion_m": 2827,
+        "apto": false,
+        "revision": "visual sobre satelite 2026-09-17: ladera sobre la ciudad; OSM escaso (3)"
+      }
+    ]
+  },
+  "panel": {
+    "regiones_incluidas": [
+      "Ancash",
+      "Arequipa",
+      "Ica",
+      "La Libertad",
+      "Lambayeque",
+      "Lima"
+    ],
+    "criterio": "solo regiones con al menos un punto verificado sobre cultivo. Se excluyen las de sierra y selva (Junin, Ayacucho, Moquegua, Apurimac): OSM casi no mapea su cultivo, el terreno es de parcelas diminutas en ladera y la 'palta' andina es mayormente criolla, no Hass, lo que confunde el objetivo"
+  }
+}

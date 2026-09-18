@@ -44,6 +44,13 @@ python scripts/migracion/verificar_rls.py  # comprueba el aislamiento entre tena
 # Track Z (experimental): geocercas por zona agroclimática en Arequipa — ver docs/ROADMAP.md
 python -m pytest tests/test_geo_zonas.py   # geocercas (partes, cruces, solape) y muestreo climático por celdas ERA5-Land
 python scripts/zonas/validar_geocercas.py --guardar   # valida datos/zonas/geocercas.geojson → datos/zonas/muestreo_clima.json
+python scripts/zonas/clima_zonas.py        # Z1: clima por cuadrante (Open-Meteo era5_seamless) → clima_cuadrantes.csv + clima_zonas.csv
+python scripts/zonas/separabilidad.py      # Z1: contrasta H1 (¿las zonas difieren?) → separabilidad.json + .png
+python scripts/zonas/rendimiento_midagri.py --descargar   # Z2: anuarios MIDAGRI → rendimiento_midagri.csv (necesita xlrd: los .xls 2017-2021)
+python scripts/zonas/panel_z2.py           # Z2: panel zona×campaña (clima + objetivo + controles) → panel_zonas.csv
+python scripts/zonas/puntos_regiones.py    # Z3: punto de clima por región (mediana de cultivos OSM) → puntos_regiones.json
+python scripts/zonas/clima_regiones.py     # Z3: clima por región paltera → clima_regiones.csv
+python scripts/zonas/experimento_z3.py     # Z3: contrasta H2 (clima vs líneas base) → experimento_z3.json + .png
 # scripts/zonas/geocercas.html  → abrir en el navegador, dibujar la geocerca de cada zona, guardar en datos/zonas/geocercas.geojson
 ```
 

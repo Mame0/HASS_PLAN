@@ -24,7 +24,7 @@
 > | **F3 / FRONT** Integrar front + mapa | Track B B6 | ✅ **hecho** (los 10 módulos con datos reales + login/admin) |
 > | **SaaS** Multi-tenant PostgreSQL + RLS | (nuevo) | ✅ **hecho** (`ARQUITECTURA.md` §14, `MIGRACION_POSTGRES.md`) |
 > | **F7** Cierre + recalibración | Track A Fase 7 | 🔲 **siguiente y último** |
-> | **Z** Zonas agroclimáticas (experimental) | propuesta del asesor | 🟢 **Z0 cerrado** (16-sep-2026) — siguiente **Z1** |
+> | **Z** Zonas agroclimáticas (experimental) | propuesta del asesor | ✅ **CERRADO** (17-sep-2026): **H1 se cumple** (las zonas difieren), **H2 no** (ese clima no predice el rendimiento) → Z4 no se ejecuta |
 >
 > **Estado al 29-jun-2026:** **51 tests verdes.** Solo queda **F7** (cosecha real de La Joya → recalibrar + doc final).
 > Las secciones "Fase N" y "Track B" de abajo se conservan como **detalle histórico**.
@@ -75,10 +75,82 @@ clima histórico de cada zona para predecir mejor que el modelo de Nepeña. Se c
 | Fase | Contenido | Estado |
 |---|---|---|
 | **Z0** Geocercas | `app/services/geo/zonas.py` + `tests/test_geo_zonas.py` + `scripts/zonas/geocercas.html` + `scripts/zonas/validar_geocercas.py` | ✅ **hecho** (16-sep-2026): geocercas dibujadas (La Joya 20 630 ha · Majes 30 195 ha), validadas y `muestreo_clima.json` con 13 cuadrantes |
-| **Z1** Clima + separabilidad (H1) | una serie por celda cubierta, pedida en su punto de `muestreo_clima.json` · Open-Meteo `models=era5_land` fijo · `derivar_features` de producción · clima de zona = promedio ponderado por área cubierta | 🔲 |
-| **Z2** Objetivo MIDAGRI | CSV por distrito (La Joya, Majes) · validación · controles (expansión de superficie, vecería). ⚠️ El compendio público de MIDAGRI trae palta **solo por región**; la serie distrital hay que pedirla (GRA Arequipa / MIDAGRI) | 🔲 |
-| **Z3** Experimento (H2) | líneas base B0/B1 · Ridge/RF · LOYO + temporal + dejando zona fuera | 🔲 |
-| **Z4** Integración | tabla `zona` (catálogo sin RLS) · `lote.zona_id` · modelo por zona con fallback | ⏸ solo si H2 se cumple |
+| **Z1** Clima + separabilidad (H1) | `scripts/zonas/clima_zonas.py` (338 filas: 13 cuadrantes × 26 campañas, Open-Meteo `models=era5_seamless`) + `scripts/zonas/separabilidad.py` | ✅ **hecho** (16-sep-2026): **H1 SE CUMPLE**, 4/5 variables clave separan |
+| **Z2** Objetivo MIDAGRI | `scripts/zonas/rendimiento_midagri.py` (lee los anuarios 2016-2023 → 215 filas región×año) + `scripts/zonas/panel_z2.py` (panel zona×campaña con controles) | ✅ **hecho** (17-sep-2026) con una limitación dura: **no existe serie distrital pública** |
+| **Z3** Experimento (H2) | `scripts/zonas/puntos_regiones.py` (punto de clima por región vía OSM) + `clima_regiones.py` + `experimento_z3.py` · panel 6 regiones × 8 campañas | ✅ **hecho** (17-sep-2026): **H2 NO SE CUMPLE** |
+| **Z4** Integración | tabla `zona` (catálogo sin RLS) · `lote.zona_id` · modelo por zona con fallback | ❌ **no se ejecuta**: H2 no se cumplió, así que un modelo por zona no está justificado |
+
+**Resultado Z1 — H1 SE CUMPLE (16-sep-2026).** 26 campañas (2001-2026), La Joya vs Majes:
+
+| Variable clave | La Joya | Majes | d | ¿Separa? |
+|---|---|---|---|---|
+| horas frío <19 °C | 4 824 | 5 519 | −2.02 | sí |
+| ETO (mm) | 1 639 | 1 576 | +1.38 | sí |
+| humedad (%) | 55.7 | 62.0 | −2.97 | sí |
+| T mínima (°C) | 15.2 | 14.4 | +1.99 | sí |
+| horas calor >25 °C | 471 | 216 | +1.58 | no (la dispersión entre cuadrantes de la misma zona supera la brecha) |
+
+Majes es **más fría, más húmeda y con más horas frío**; La Joya, más cálida, seca y con más ETO. Todas
+las diferencias dan p < 0.001 en el test pareado por campaña. Pero la **correlación entre zonas es alta
+(r = 0.66–0.96)**: las dos se mueven juntas de un año a otro, así que la zona es sobre todo un **desnivel
+fijo**, no un comportamiento distinto año a año. Eso importa para Z3: el efecto de zona lo capturaría una
+variable indicadora, y el "efecto del año" sigue siendo común a ambas.
+
+**OOD contra el entrenamiento de Nepeña:** La Joya cae fuera de rango en **7 de 12** variables y Majes en
+**10 de 12** — el modelo actual extrapola en las dos zonas, y más en Majes.
+
+Salidas: `datos/zonas/clima_cuadrantes.csv`, `clima_zonas.csv`, `separabilidad.json`, `separabilidad.png`.
+
+**Resultado Z2 — el dato público llega solo a REGIÓN (17-sep-2026).** Se verificó fuente por fuente:
+
+| Fuente | Qué da | Estado |
+|---|---|---|
+| Compendio anual de Producción Agrícola (gob.pe) | palta: producción, superficie, rendimiento y precio **según región**; anuarios **2016-2023** | ✅ única fuente descargable |
+| Portal SIEA (Power BI) | perfiles regionales/departamentales | ✅ pero no baja de región |
+| Rutas antiguas del SIEA (`phocadownload/.../agricola_AAAA.pdf`) | — | ❌ redirigen a la portada |
+| `datosabiertos.gob.pe` | `package_list` responde; `package_show` del dataset de MIDAGRI vuelve vacío | ❌ la ficha exige login |
+| SISCA, geosiea, INEI | — | ❌ no responden |
+| `agroarequipa.gob.pe` | — | ❌ su sección de estadística da 404 |
+| Wayback Machine | anuarios 2015-2018 (mismos años) y superficie agrícola distrital 2020 | ❌ nada de palta por distrito |
+
+**Serie obtenida (Arequipa, t/ha):** 15.4 (2016) · 18.0 · 19.8 · 21.8 · 22.2 (2020) · 18.4 · 15.8 · 15.9 (2023).
+Media 18.4, rango 15.4-22.2 — coherente con el 14-24 t/ha de `REFERENCIA_LA_JOYA.md`. Validación:
+rendimiento publicado = producción/superficie en todas las filas (0 descuadres > 1 %).
+
+**Consecuencia para H2:** con **8 campañas** y un objetivo que **ambas zonas comparten**, el efecto de
+zona no es identificable y no alcanza para ajustar ni validar un modelo. Las correlaciones
+clima-rendimiento (n=8) salen todas no significativas salvo dos casos límite (p≈0.05) que, sobre 24
+pruebas, son ruido esperable. Z3 necesita otra unidad de análisis o esperar la cosecha real (F7).
+
+**Resultado Z3 — H2 NO SE CUMPLE (17-sep-2026).** Panel de **6 regiones × 8 campañas = 48 filas**
+(La Libertad, Lima, Ica, Lambayeque, Áncash y Arequipa: las palteras de costa con punto de clima
+verificado sobre cultivo, ~77 % de la superficie nacional). El clima se pidió en 11 puntos elegidos
+con un criterio objetivo: la mediana de los polígonos de cultivo de OpenStreetMap en cada valle,
+revisada después sobre satélite.
+
+| Validación | Modelo | MAE (t/ha) | R² | skill vs B0 | skill vs B1 |
+|---|---|---|---|---|---|
+| Dejando un año fuera | B0 media de la región | 2.77 | 0.27 | — | −0.20 |
+| | **B1 persistencia** | **2.30** | **0.32** | +0.17 | — |
+| | M2 clima+controles (primario) | 3.06 | −0.44 | −0.11 | −0.33 |
+| Dejando una región fuera | B0 media de la región | 3.69 | −0.20 | — | −0.57 |
+| | **B1 persistencia** | **2.35** | **0.28** | +0.36 | — |
+| | M2 clima+controles (primario) | 3.75 | −0.37 | −0.02 | −0.59 |
+
+**Ningún modelo con clima superó a las líneas base**, ni el Ridge ni el Random Forest, ni dejando un
+año fuera ni dejando una región fuera. El mejor predictor es **el rendimiento del año anterior**
+(≈2.3 t/ha de error). Prueba exploratoria adicional: aun regalándole al modelo el nivel histórico de
+cada región y pidiéndole solo la **anomalía**, el clima empeora el resultado (skill −0.11).
+
+**Lectura para la tesis.** Las zonas sí difieren climáticamente (H1), pero esa diferencia **no se
+traduce en rendimiento predecible** con el dato disponible. Coincide con lo que ya decía el sistema en
+`services/prediccion.py`: la señal fuerte es la cosecha reciente observada, no el clima — que es
+exactamente el principio de la **recalibración progresiva** ya implementada. Tres razones probables:
+el objetivo es un promedio regional dominado por factores no climáticos (huertos nuevos entrando en
+producción, mezcla de variedades, manejo, mercado); el clima se resume en 1-2 puntos por región; y
+8 campañas son pocas.
+
+Salidas: `datos/zonas/puntos_regiones.json`, `clima_regiones.csv`, `experimento_z3.json`, `experimento_z3.png`.
 
 **Gate Z0 — CUMPLIDO (16-sep-2026):** 86 tests verdes ✅ · `validar_geocercas.py` sin errores ni avisos ✅ ·
 geocercas y los 13 puntos de clima revisados sobre satélite ✅ (6 puntos vienen de referencias verificadas;

@@ -1,0 +1,113 @@
+{
+  "generado": "2026-09-17",
+  "unidad": "region x campana",
+  "regiones": [
+    "Ancash",
+    "Arequipa",
+    "Ica",
+    "La Libertad",
+    "Lambayeque",
+    "Lima"
+  ],
+  "campanas": [
+    2016,
+    2023
+  ],
+  "filas": 48,
+  "features_clima": [
+    "hfrio_19",
+    "hac_25",
+    "eto",
+    "humedad",
+    "t_min"
+  ],
+  "controles": [
+    "var_superficie_pct",
+    "rend_anterior_t_ha"
+  ],
+  "modelo_primario": "M2 Ridge clima+controles",
+  "criterio": "skill > 0 frente a B0 y B1 en LOYO y LORO",
+  "resultados": {
+    "anio": {
+      "B0": {
+        "mae": 2.765,
+        "rmse": 3.864,
+        "r2": 0.274,
+        "skill_b0": 0.0,
+        "skill_b1": -0.204
+      },
+      "B1": {
+        "mae": 2.296,
+        "rmse": 3.731,
+        "r2": 0.323,
+        "skill_b0": 0.17,
+        "skill_b1": 0.0
+      },
+      "M1 Ridge clima": {
+        "mae": 3.211,
+        "rmse": 4.377,
+        "r2": 0.069,
+        "skill_b0": -0.161,
+        "skill_b1": -0.398
+      },
+      "M2 Ridge clima+controles": {
+        "mae": 3.063,
+        "rmse": 5.436,
+        "r2": -0.436,
+        "skill_b0": -0.108,
+        "skill_b1": -0.334
+      },
+      "M3 RF clima+controles": {
+        "mae": 2.752,
+        "rmse": 3.957,
+        "r2": 0.239,
+        "skill_b0": 0.005,
+        "skill_b1": -0.198
+      }
+    },
+    "region": {
+      "B0": {
+        "mae": 3.693,
+        "rmse": 4.96,
+        "r2": -0.196,
+        "skill_b0": 0.0,
+        "skill_b1": -0.568
+      },
+      "B1": {
+        "mae": 2.355,
+        "rmse": 3.853,
+        "r2": 0.278,
+        "skill_b0": 0.362,
+        "skill_b1": 0.0
+      },
+      "M1 Ridge clima": {
+        "mae": 3.938,
+        "rmse": 5.068,
+        "r2": -0.249,
+        "skill_b0": -0.066,
+        "skill_b1": -0.672
+      },
+      "M2 Ridge clima+controles": {
+        "mae": 3.749,
+        "rmse": 5.308,
+        "r2": -0.37,
+        "skill_b0": -0.015,
+        "skill_b1": -0.592
+      },
+      "M3 RF clima+controles": {
+        "mae": 3.616,
+        "rmse": 4.713,
+        "r2": -0.08,
+        "skill_b0": 0.021,
+        "skill_b1": -0.535
+      }
+    }
+  },
+  "h2_se_cumple": false,
+  "exploratorio_anomalias": {
+    "mae_con_clima": 3.066,
+    "mae_sin_clima": 2.765,
+    "skill": -0.109,
+    "nota": "no preinscrito; LOYO sobre anomalias por region"
+  }
+}
